@@ -105,7 +105,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // RolLabel
             // 
             this.RolLabel.AutoSize = true;
-            this.RolLabel.Location = new System.Drawing.Point(827, 96);
+            this.RolLabel.Location = new System.Drawing.Point(802, 96);
             this.RolLabel.Name = "RolLabel";
             this.RolLabel.Size = new System.Drawing.Size(31, 20);
             this.RolLabel.TabIndex = 5;
@@ -133,7 +133,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.emailTextBox.Location = new System.Drawing.Point(605, 133);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(316, 27);
+            this.emailTextBox.Size = new System.Drawing.Size(291, 27);
             this.emailTextBox.TabIndex = 8;
             // 
             // usuarioIdTextBox
@@ -161,6 +161,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.confirmarTextBox.Location = new System.Drawing.Point(390, 176);
             this.confirmarTextBox.Name = "confirmarTextBox";
+            this.confirmarTextBox.PasswordChar = '*';
             this.confirmarTextBox.Size = new System.Drawing.Size(125, 27);
             this.confirmarTextBox.TabIndex = 12;
             // 
@@ -168,6 +169,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.claveTextBox.Location = new System.Drawing.Point(114, 176);
             this.claveTextBox.Name = "claveTextBox";
+            this.claveTextBox.PasswordChar = '*';
             this.claveTextBox.Size = new System.Drawing.Size(125, 27);
             this.claveTextBox.TabIndex = 13;
             // 
@@ -175,7 +177,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.IngresoDateTimePicker.Location = new System.Drawing.Point(671, 176);
             this.IngresoDateTimePicker.Name = "IngresoDateTimePicker";
-            this.IngresoDateTimePicker.Size = new System.Drawing.Size(250, 27);
+            this.IngresoDateTimePicker.Size = new System.Drawing.Size(225, 27);
             this.IngresoDateTimePicker.TabIndex = 14;
             // 
             // RolComboBox
@@ -195,7 +197,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             "8",
             "9",
             "10"});
-            this.RolComboBox.Location = new System.Drawing.Point(864, 93);
+            this.RolComboBox.Location = new System.Drawing.Point(839, 93);
             this.RolComboBox.Name = "RolComboBox";
             this.RolComboBox.Size = new System.Drawing.Size(57, 28);
             this.RolComboBox.TabIndex = 15;
@@ -256,7 +258,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // activoCheckBox
             // 
             this.activoCheckBox.AutoSize = true;
-            this.activoCheckBox.Location = new System.Drawing.Point(848, 50);
+            this.activoCheckBox.Location = new System.Drawing.Point(823, 50);
             this.activoCheckBox.Name = "activoCheckBox";
             this.activoCheckBox.Size = new System.Drawing.Size(73, 24);
             this.activoCheckBox.TabIndex = 20;
@@ -267,7 +269,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 355);
+            this.ClientSize = new System.Drawing.Size(922, 355);
             this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(this.BuscarButton);
             this.Controls.Add(this.EliminarButton);

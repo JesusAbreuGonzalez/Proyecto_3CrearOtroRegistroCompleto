@@ -29,6 +29,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaBuscar));
             this.ResultActivoCheckBox = new System.Windows.Forms.CheckBox();
             this.ResultIngresoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ResultNombresTextBox = new System.Windows.Forms.TextBox();
@@ -56,10 +57,12 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             // ResultIngresoDateTimePicker
             // 
+            this.ResultIngresoDateTimePicker.CustomFormat = "";
             this.ResultIngresoDateTimePicker.Location = new System.Drawing.Point(146, 193);
             this.ResultIngresoDateTimePicker.Name = "ResultIngresoDateTimePicker";
-            this.ResultIngresoDateTimePicker.Size = new System.Drawing.Size(250, 27);
+            this.ResultIngresoDateTimePicker.Size = new System.Drawing.Size(224, 27);
             this.ResultIngresoDateTimePicker.TabIndex = 31;
+            this.ResultIngresoDateTimePicker.ValueChanged += new System.EventHandler(this.ResultIngresoDateTimePicker_ValueChanged);
             // 
             // ResultNombresTextBox
             // 
@@ -168,6 +171,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.Controls.Add(this.NombresLabel);
             this.Controls.Add(this.Aliaslabel);
             this.Controls.Add(this.usuariosIdLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VentanaBuscar";
             this.Text = "VentanaBuscar";
             this.ResumeLayout(false);

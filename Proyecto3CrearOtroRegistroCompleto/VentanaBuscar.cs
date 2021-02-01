@@ -13,6 +13,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
         public VentanaBuscar()
         {
             InitializeComponent();
+            ResultIngresoDateTimePicker.Format = DateTimePickerFormat.Custom;
+            ResultIngresoDateTimePicker.CustomFormat = "dd/MM/yyyy - dddd";
+        }
+
+        private void ResultIngresoDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,6 +17,11 @@ namespace Proyecto3CrearOtroRegistroCompleto
         public Form1()
         {
             InitializeComponent();
+          
+            // Set the Format type and the CustomFormat string.
+            IngresoDateTimePicker.Format = DateTimePickerFormat.Custom;
+            IngresoDateTimePicker.CustomFormat = "dd/MM/yyyy - dddd";
+
         }
 
         //Creamos la funcion "Existe" para usarla en el guardar y verificar si el id ya existe   
