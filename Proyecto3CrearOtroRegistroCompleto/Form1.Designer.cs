@@ -291,7 +291,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.Controls.Add(this.usuariosIdLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Registro de usuarios";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
