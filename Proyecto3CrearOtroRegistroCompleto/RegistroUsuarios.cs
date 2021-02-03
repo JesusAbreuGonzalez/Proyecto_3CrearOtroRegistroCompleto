@@ -267,5 +267,10 @@ namespace Proyecto3CrearOtroRegistroCompleto
                     MessageBox.Show("Este Usuario no existe en la base de datos");
             }
         }
+
+        private void RegistroUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
