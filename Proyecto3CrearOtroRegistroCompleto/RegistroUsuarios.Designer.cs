@@ -52,8 +52,9 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.BuscarButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.usuarioIdTextBox = new System.Windows.Forms.TextBox();
+            this.UsuarioIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsuarioIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // usuariosIdLabel
@@ -227,7 +228,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // BuscarButton
             // 
             this.BuscarButton.Image = ((System.Drawing.Image)(resources.GetObject("BuscarButton.Image")));
-            this.BuscarButton.Location = new System.Drawing.Point(229, 22);
+            this.BuscarButton.Location = new System.Drawing.Point(247, 23);
             this.BuscarButton.Name = "BuscarButton";
             this.BuscarButton.Size = new System.Drawing.Size(35, 27);
             this.BuscarButton.TabIndex = 19;
@@ -248,19 +249,19 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.activoCheckBox.Text = "Activo";
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // usuarioIdTextBox
+            // UsuarioIdNumericUpDown
             // 
-            this.usuarioIdTextBox.Location = new System.Drawing.Point(91, 23);
-            this.usuarioIdTextBox.Name = "usuarioIdTextBox";
-            this.usuarioIdTextBox.Size = new System.Drawing.Size(125, 27);
-            this.usuarioIdTextBox.TabIndex = 21;
+            this.UsuarioIdNumericUpDown.Location = new System.Drawing.Point(91, 24);
+            this.UsuarioIdNumericUpDown.Name = "UsuarioIdNumericUpDown";
+            this.UsuarioIdNumericUpDown.Size = new System.Drawing.Size(150, 27);
+            this.UsuarioIdNumericUpDown.TabIndex = 21;
             // 
             // RegistroUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 270);
-            this.Controls.Add(this.usuarioIdTextBox);
+            this.Controls.Add(this.UsuarioIdNumericUpDown);
             this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(this.BuscarButton);
             this.Controls.Add(this.EliminarButton);
@@ -286,6 +287,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.Text = "Registro de usuarios";
             this.Load += new System.EventHandler(this.RegistroUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsuarioIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,7 +316,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private System.Windows.Forms.Button BuscarButton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.CheckBox activoCheckBox;
-        private System.Windows.Forms.TextBox usuarioIdTextBox;
+        private System.Windows.Forms.NumericUpDown UsuarioIdNumericUpDown;
     }
 }
 

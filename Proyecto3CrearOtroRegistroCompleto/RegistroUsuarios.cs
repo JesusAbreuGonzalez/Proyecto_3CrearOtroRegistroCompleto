@@ -99,9 +99,9 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //y que la clave y su confirmacion sean iguales
         void Validar(ref bool interruptor)
         {
-            if (usuarioIdTextBox.Text == "")
+            if (UsuarioIdNumericUpDown.Value == 0)
             {
-                errorProvider1.SetError(usuarioIdTextBox, "Campo obligatorio");
+                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
                 interruptor = true;
             }
 
@@ -151,7 +151,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton Nuevo, sirve para limpiar los campos y errores
         private void NuevoButton_Click(object sender, EventArgs e)
         {
-            usuarioIdTextBox.Text = "";
+            UsuarioIdNumericUpDown.Value = 0;
             aliasTextBox.Text = "";
             emailTextBox.Text = "";
             claveTextBox.Text = "";
@@ -172,16 +172,16 @@ namespace Proyecto3CrearOtroRegistroCompleto
             contexto.Dispose();
 
             //Igualamos cada objeto grafico de la 2da ventana al valor que queremos que tome
-            if (usuarioIdTextBox.Text == "")
+            if (UsuarioIdNumericUpDown.Value == 0)
             {
                 //Indicamos los errores que mostrará si algún campo queda vacío
-                errorProvider1.SetError(usuarioIdTextBox, "Campo obligatorio");
+                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
             }
             else
             {
-                if (ExisteUsuario(Convert.ToInt32(usuarioIdTextBox.Text)))
+                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
                 {
-                    usuarios = Buscar(Convert.ToInt32(usuarioIdTextBox.Text));
+                    usuarios = Buscar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
                     ventana.ResultUsuarioIdTextBox.Text = Convert.ToString(usuarios.UsuarioId);
                     ventana.ResultAliasTextBox.Text = usuarios.Alias;
                     ventana.ResultNombresTextBox.Text = usuarios.Nombres;
@@ -211,10 +211,10 @@ namespace Proyecto3CrearOtroRegistroCompleto
             if (!interruptor)
             {
                 //Verificamos que no exista un id igual, en caso de que exista, se procede a modificarlo
-                if (ExisteUsuario(Convert.ToInt32(usuarioIdTextBox.Text)))
+                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
                 {
-                    Eliminar(Convert.ToInt32(usuarioIdTextBox.Text));
-                    usuarios.UsuarioId = Convert.ToInt32(usuarioIdTextBox.Text);
+                    Eliminar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
+                    usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
                     usuarios.Alias = aliasTextBox.Text;
                     usuarios.Email = emailTextBox.Text;
                     usuarios.Clave = claveTextBox.Text;
@@ -231,7 +231,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
                 }
                 else
                 {
-                    usuarios.UsuarioId = Convert.ToInt32(usuarioIdTextBox.Text);
+                    usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
                     usuarios.Alias = aliasTextBox.Text;
                     usuarios.Email = emailTextBox.Text;
                     usuarios.Clave = claveTextBox.Text;
@@ -251,16 +251,16 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
         private void EliminarButton_Click(object sender, EventArgs e)
         {
-            if (usuarioIdTextBox.Text == "")
+            if (UsuarioIdNumericUpDown.Value == 0)
             {
                 //Indicamos los errores que mostrará si algún campo queda vacío
-                errorProvider1.SetError(usuarioIdTextBox, "Campo obligatorio");
+                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
             }
             else
             {
-                if (ExisteUsuario(Convert.ToInt32(usuarioIdTextBox.Text)))
+                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
                 {
-                    Eliminar(Convert.ToInt32(usuarioIdTextBox.Text));
+                    Eliminar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
                     MessageBox.Show("Este Usuario fue eliminado de la base de datos");
                 }
                 else
