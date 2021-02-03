@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Proyecto3CrearOtroRegistroCompleto
 {
-    public partial class Form1 : Form
+    public partial class RegistroUsuarios : Form
     {
-        public Form1()
+        public RegistroUsuarios()
         {
             InitializeComponent();
           

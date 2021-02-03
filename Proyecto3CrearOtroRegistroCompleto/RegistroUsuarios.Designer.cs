@@ -1,7 +1,7 @@
 ﻿
 namespace Proyecto3CrearOtroRegistroCompleto
 {
-    partial class Form1
+    partial class RegistroUsuarios
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,7 +30,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroUsuarios));
             this.usuariosIdLabel = new System.Windows.Forms.Label();
             this.Aliaslabel = new System.Windows.Forms.Label();
             this.NombresLabel = new System.Windows.Forms.Label();
