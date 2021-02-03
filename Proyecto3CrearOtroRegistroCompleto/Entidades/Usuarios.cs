@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Proyecto3CrearOtroRegistroCompleto.Entidades
@@ -14,19 +15,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.Entidades
         public string Nombres { get; set; }
         public string Email { get; set; }
         public string Clave { get; set; }
-        public int RolId { get; set; }
         public bool Activo { get; set; }
 
-        public Usuarios()
-        {
-            UsuarioId = 0;
-            FechaIngreso = DateTime.Now;
-            Alias = string.Empty;
-            Nombres = string.Empty;
-            Email = string.Empty;
-            Clave = string.Empty;
-            RolId = 0;
-            Activo = true;
-        }
+        public int RolId { get; set; }
+        [ForeignKey("RolId")]
+        public virtual Roles Rol { get; set; }
     }
 }
