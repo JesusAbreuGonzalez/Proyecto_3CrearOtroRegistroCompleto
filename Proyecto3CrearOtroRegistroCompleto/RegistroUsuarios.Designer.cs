@@ -169,6 +169,9 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             // IngresoDateTimePicker
             // 
+            this.IngresoDateTimePicker.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IngresoDateTimePicker.CustomFormat = "dd/MM/yyyy";
+            this.IngresoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.IngresoDateTimePicker.Location = new System.Drawing.Point(648, 159);
             this.IngresoDateTimePicker.Name = "IngresoDateTimePicker";
             this.IngresoDateTimePicker.Size = new System.Drawing.Size(225, 27);
