@@ -151,31 +151,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton Nuevo, sirve para limpiar los campos y errores
         private void NuevoButton_Click(object sender, EventArgs e)
         {
-            UsuarioIdNumericUpDown.Value = 0;
-            aliasTextBox.Text = "";
-            emailTextBox.Text = "";
-            claveTextBox.Text = "";
-            confirmarTextBox.Text = "";
-            nombresTextBox.Text = "";
-            RolComboBox.SelectedItem = "";
-            IngresoDateTimePicker.Value = DateTime.Now;
-            errorProvider1.Clear();
+
         }
 
 
         //Este es el evento del boton Buscar, sirve para buscar los datos correspondientes al id ingresado
         private void BuscarButton_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios();
-            Contexto contexto = new Contexto();
-            contexto.Dispose();
-
-            //Igualamos cada objeto grafico de la 2da ventana al valor que queremos que tome
-            if (UsuarioIdNumericUpDown.Value == 0)
-            {
-                //Indicamos los errores que mostrará si algún campo queda vacío
-                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
-            }
          
         }
                 
@@ -183,69 +165,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento de boton guardar y sirve para almacenar o modificar los datos de los usuarios que se registren
         private void GuardarButton_Click(object sender, EventArgs e)
         {
-            Contexto contexto = new Contexto();
-            Usuarios usuarios = new Usuarios();
-            bool interruptor = false;
-
-            Validar(ref interruptor);
-            if (!interruptor)
-            {
-                //Verificamos que no exista un id igual, en caso de que exista, se procede a modificarlo
-                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
-                {
-                    Eliminar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
-                    usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
-                    usuarios.Alias = aliasTextBox.Text;
-                    usuarios.Email = emailTextBox.Text;
-                    usuarios.Clave = claveTextBox.Text;
-                    usuarios.FechaIngreso = IngresoDateTimePicker.Value;
-                    usuarios.Activo = activoCheckBox.Checked;
-                    usuarios.Nombres = nombresTextBox.Text;
-                    usuarios.RolId = Convert.ToInt32(RolComboBox.Text);
-                    contexto.Usuarios.Add(usuarios);
-                    contexto.SaveChanges();
-                    contexto.Dispose();
-                    errorProvider1.Clear();
-                    MessageBox.Show("El usuario fue modificado con exito a la base de datos");
-
-                }
-                else
-                {
-                    usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
-                    usuarios.Alias = aliasTextBox.Text;
-                    usuarios.Email = emailTextBox.Text;
-                    usuarios.Clave = claveTextBox.Text;
-                    usuarios.FechaIngreso = IngresoDateTimePicker.Value;
-                    usuarios.Activo = activoCheckBox.Checked;
-                    usuarios.Nombres = nombresTextBox.Text;
-                    usuarios.RolId = Convert.ToInt32(RolComboBox.Text);
-                    contexto.Usuarios.Add(usuarios);
-                    contexto.SaveChanges();
-                    contexto.Dispose();
-                    errorProvider1.Clear();
-                    MessageBox.Show("El usuario fue agregado con exito a la base de datos");
-                }
-            }
+            
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
         private void EliminarButton_Click(object sender, EventArgs e)
         {
-            if (UsuarioIdNumericUpDown.Value == 0)
-            {
-                //Indicamos los errores que mostrará si algún campo queda vacío
-                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
-            }
-            else
-            {
-                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
-                {
-                    Eliminar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
-                    MessageBox.Show("Este Usuario fue eliminado de la base de datos");
-                }
-                else
-                    MessageBox.Show("Este Usuario no existe en la base de datos");
-            }
+           
         }
 
         private void RegistroUsuarios_Load(object sender, EventArgs e)

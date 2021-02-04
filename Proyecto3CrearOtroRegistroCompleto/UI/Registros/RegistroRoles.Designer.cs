@@ -116,6 +116,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.GuardarRolButton.Text = "Guardar";
             this.GuardarRolButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.GuardarRolButton.UseVisualStyleBackColor = true;
+            this.GuardarRolButton.Click += new System.EventHandler(this.GuardarRolButton_Click);
             // 
             // NuevoRolButton
             // 

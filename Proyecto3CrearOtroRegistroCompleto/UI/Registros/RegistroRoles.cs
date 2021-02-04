@@ -16,5 +16,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         {
             InitializeComponent();
         }
+
+        private void GuardarRolButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
