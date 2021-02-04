@@ -168,7 +168,6 @@ namespace Proyecto3CrearOtroRegistroCompleto
         {
             Usuarios usuarios = new Usuarios();
             Contexto contexto = new Contexto();
-            VentanaBuscar ventana = new VentanaBuscar();
             contexto.Dispose();
 
             //Igualamos cada objeto grafico de la 2da ventana al valor que queremos que tome
@@ -177,26 +176,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
                 //Indicamos los errores que mostrará si algún campo queda vacío
                 errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
             }
-            else
-            {
-                if (ExisteUsuario(Convert.ToInt32(UsuarioIdNumericUpDown.Value)))
-                {
-                    usuarios = Buscar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
-                    ventana.ResultUsuarioIdTextBox.Text = Convert.ToString(usuarios.UsuarioId);
-                    ventana.ResultAliasTextBox.Text = usuarios.Alias;
-                    ventana.ResultNombresTextBox.Text = usuarios.Nombres;
-                    ventana.ResultActivoCheckBox.Checked = usuarios.Activo;
-                    ventana.ResultEmailTextBox.Text = usuarios.Email;
-                    ventana.ResultIngresoDateTimePicker.Value = usuarios.FechaIngreso;
-                    ventana.ResultRolTextBox.Text = Convert.ToString(usuarios.RolId);
-                    ventana.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Este usuario no existe en la base de datos");
-                }
-
-            }
+         
         }
                 
 
