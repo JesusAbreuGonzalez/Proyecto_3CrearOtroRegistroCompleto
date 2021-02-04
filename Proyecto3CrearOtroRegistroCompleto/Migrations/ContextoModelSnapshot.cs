@@ -16,6 +16,23 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", b =>
+                {
+                    b.Property<int>("RolId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("RolId");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Usuarios", b =>
                 {
                     b.Property<int>("UsuarioId")
@@ -45,7 +62,20 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
 
                     b.HasKey("UsuarioId");
 
+                    b.HasIndex("RolId");
+
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Usuarios", b =>
+                {
+                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", "Rol")
+                        .WithMany()
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
                 });
 #pragma warning restore 612, 618
         }

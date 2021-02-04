@@ -31,12 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="GestionUsuarios.Db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
 
