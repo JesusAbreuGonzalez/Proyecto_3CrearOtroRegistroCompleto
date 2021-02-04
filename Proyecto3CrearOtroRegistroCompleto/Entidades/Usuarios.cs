@@ -16,9 +16,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.Entidades
         public string Email { get; set; }
         public string Clave { get; set; }
         public bool Activo { get; set; }
+        public string Rol { get; set; }
 
         public int RolId { get; set; }
         [ForeignKey("RolId")]
-        public virtual Roles Rol { get; set; }
+        public virtual Roles rol { get; set; }
     }
 }

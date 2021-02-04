@@ -33,6 +33,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
                     Email = table.Column<string>(type: "TEXT", nullable: true),
                     Clave = table.Column<string>(type: "TEXT", nullable: true),
                     Activo = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Rol = table.Column<string>(type: "TEXT", nullable: true),
                     RolId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

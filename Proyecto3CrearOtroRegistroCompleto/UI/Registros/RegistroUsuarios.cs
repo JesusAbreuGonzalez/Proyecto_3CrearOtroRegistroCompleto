@@ -40,47 +40,47 @@ namespace Proyecto3CrearOtroRegistroCompleto
         {
             if (UsuarioIdNumericUpDown.Value == 0)
             {
-                errorProvider1.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (nombresTextBox.Text == "")
             {
-                errorProvider1.SetError(nombresTextBox, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(nombresTextBox, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (claveTextBox.Text == "")
             {
-                errorProvider1.SetError(claveTextBox, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(claveTextBox, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (confirmarTextBox.Text == "")
             {
-                errorProvider1.SetError(confirmarTextBox, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(confirmarTextBox, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (emailTextBox.Text == "")
             {
-                errorProvider1.SetError(emailTextBox, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(emailTextBox, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (RolComboBox.Text == "")
             {
-                errorProvider1.SetError(RolComboBox, "Campo obligatorio");
+                UsuarioErrorProvider.SetError(RolComboBox, "Campo obligatorio");
                 interruptor = true;
             }
 
             if (confirmarTextBox.Text != claveTextBox.Text && confirmarTextBox.Text != "")
             {
-                errorProvider1.SetError(confirmarTextBox, "Claves no coinciden");
+                UsuarioErrorProvider.SetError(confirmarTextBox, "Claves no coinciden");
                 interruptor = true;
             }
         }
-
+       
 
         private void ClaveLabel_Click(object sender, EventArgs e)
         {

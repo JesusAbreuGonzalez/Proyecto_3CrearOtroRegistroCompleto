@@ -50,10 +50,10 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.GuardarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.BuscarButton = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.UsuarioErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.UsuarioIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsuarioErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -238,9 +238,9 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.BuscarButton.UseVisualStyleBackColor = true;
             this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
-            // errorProvider1
+            // UsuarioErrorProvider
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.UsuarioErrorProvider.ContainerControl = this;
             // 
             // activoCheckBox
             // 
@@ -289,7 +289,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.Name = "RegistroUsuarios";
             this.Text = "Registro de usuarios";
             this.Load += new System.EventHandler(this.RegistroUsuarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsuarioErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -317,7 +317,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private System.Windows.Forms.Button GuardarButton;
         private System.Windows.Forms.Button EliminarButton;
         private System.Windows.Forms.Button BuscarButton;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider UsuarioErrorProvider;
         private System.Windows.Forms.CheckBox activoCheckBox;
         private System.Windows.Forms.NumericUpDown UsuarioIdNumericUpDown;
     }
