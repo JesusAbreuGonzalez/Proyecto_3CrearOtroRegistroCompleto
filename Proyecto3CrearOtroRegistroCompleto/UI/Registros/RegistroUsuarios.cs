@@ -95,6 +95,26 @@ namespace Proyecto3CrearOtroRegistroCompleto
             return usuarios;
         }
 
+        private bool LLenaCampos(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
+
+            if (usuarios != null)
+            {
+                //El id no lo llenamos porque ya estaria lleno
+                RolComboBox.Text = Convert.ToString(usuarios.RolId);
+                nombresTextBox.Text = usuarios.Nombres;
+                aliasTextBox.Text = usuarios.Alias;
+                claveTextBox.Text = usuarios.Clave;
+                activoCheckBox.Checked = usuarios.Activo;
+                emailTextBox.Text = usuarios.Email;
+                IngresoDateTimePicker.Value = usuarios.FechaIngreso;
+                return true;
+            }
+            else
+                return false;
+        }
+
 
         private void ClaveLabel_Click(object sender, EventArgs e)
         {
