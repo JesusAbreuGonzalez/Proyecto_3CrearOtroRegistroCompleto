@@ -90,10 +90,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             Contexto contexto = new Contexto();
             try
             {
-                var usuarios = contexto.Usuarios.Find(id);
-                if (usuarios != null)
+                var roles = contexto.Roles.Find(id);
+                if (roles != null)
                 {
-                    contexto.Usuarios.Remove(usuarios);
+                    contexto.Roles.Remove(roles);
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -108,5 +108,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             }
             return paso;
         }
+
+
     }
 }
