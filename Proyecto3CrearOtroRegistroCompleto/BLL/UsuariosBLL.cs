@@ -86,5 +86,32 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
         }
 
 
+        public static bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            try
+            {
+                var usuarios = contexto.Usuarios.Find(id);
+                if (usuarios != null)
+                {
+                    contexto.Usuarios.Remove(usuarios);
+                    paso = contexto.SaveChanges() > 0;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
+
+        
+
     }
 }
