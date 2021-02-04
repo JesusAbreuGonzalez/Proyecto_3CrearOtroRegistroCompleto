@@ -109,6 +109,26 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
+        public static Roles Buscar(int id)
+        {
+            Contexto contexto = new Contexto();
+            Roles roles;
+
+            try
+            {
+                roles = contexto.Roles.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return roles;
+        }
 
     }
 }

@@ -17,82 +17,18 @@ namespace Proyecto3CrearOtroRegistroCompleto
         public RegistroUsuarios()
         {
             InitializeComponent();
-          
-            // Set the Format type and the CustomFormat string.
-            IngresoDateTimePicker.Format = DateTimePickerFormat.Custom;
-            IngresoDateTimePicker.CustomFormat = "dd/MM/yyyy - dddd";
-
         }
 
-        //Creamos la funcion "Existe" para usarla en el guardar y verificar si el id ya existe   
-
-        public static bool ExisteUsuario(int id)
+        private void Limpiar()
         {
-            Contexto contexto = new Contexto();
-            bool encontrado = false;
-
-            try
-            {
-                encontrado = contexto.Usuarios.Any(e => e.UsuarioId == id);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return encontrado;
-        }
-
-        //El metodo eliminar lo utilizaremos en el evento del boton eliminar, para borrar entidades
-        public static bool Eliminar(int id)
-        {
-            bool interruptor = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-                var usuarios = contexto.Usuarios.Find(id);
-
-                if (usuarios != null)
-                {
-                    contexto.Usuarios.Remove(usuarios);//Se elimina la entidad
-                    interruptor = contexto.SaveChanges() > 0;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return interruptor;
-        }
-
-        public static Usuarios Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
-            Usuarios usuarios;
-
-            try
-            {
-                usuarios = contexto.Usuarios.Find(id);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return usuarios;
+            UsuarioIdNumericUpDown.Value = 0;
+            aliasTextBox.Clear();
+            nombresTextBox.Clear();
+            claveTextBox.Clear();
+            confirmarTextBox.Clear();
+            emailTextBox.Clear();
+            IngresoDateTimePicker.Value = DateTime.Now;
+            activoCheckBox.Checked = false;
         }
 
         //Esta funcion sirve para verificar que no falte ningun campo obligatorio por llenar 
@@ -151,7 +87,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton Nuevo, sirve para limpiar los campos y errores
         private void NuevoButton_Click(object sender, EventArgs e)
         {
-
+            Limpiar();
         }
 
 
