@@ -80,7 +80,21 @@ namespace Proyecto3CrearOtroRegistroCompleto
                 interruptor = true;
             }
         }
-       
+
+        private Usuarios LlenaClase()
+        {
+            Usuarios usuarios = new Usuarios();
+            usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
+            usuarios.Nombres = nombresTextBox.Text;
+            usuarios.Alias = aliasTextBox.Text;
+            usuarios.Clave = claveTextBox.Text;
+            usuarios.Rol = RolComboBox.Text;
+            usuarios.FechaIngreso = IngresoDateTimePicker.Value;
+            usuarios.Activo = activoCheckBox.Checked;
+
+            return usuarios;
+        }
+
 
         private void ClaveLabel_Click(object sender, EventArgs e)
         {
