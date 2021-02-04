@@ -42,7 +42,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
-        private static bool Modificar(Usuarios usuarios)
+        public static bool Modificar(Usuarios usuarios)
         {
             bool paso = false;
             Contexto contexto = new Contexto();

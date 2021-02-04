@@ -29,18 +29,21 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroRoles));
             this.RolIdLabel = new System.Windows.Forms.Label();
             this.DescripcionLabel = new System.Windows.Forms.Label();
             this.FechaCreacionLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.DescripcionTextBox = new System.Windows.Forms.TextBox();
+            this.CreacionDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.RolIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.EliminarRolButton = new System.Windows.Forms.Button();
             this.GuardarRolButton = new System.Windows.Forms.Button();
             this.NuevoRolButton = new System.Windows.Forms.Button();
             this.BuscarRolButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.RolErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.RolIdNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RolErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // RolIdLabel
@@ -70,28 +73,28 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.FechaCreacionLabel.TabIndex = 2;
             this.FechaCreacionLabel.Text = "Fecha de Creación";
             // 
-            // textBox2
+            // DescripcionTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(221, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 27);
-            this.textBox2.TabIndex = 4;
+            this.DescripcionTextBox.Location = new System.Drawing.Point(221, 76);
+            this.DescripcionTextBox.Name = "DescripcionTextBox";
+            this.DescripcionTextBox.Size = new System.Drawing.Size(150, 27);
+            this.DescripcionTextBox.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // CreacionDateTimePicker
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(221, 130);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(150, 27);
-            this.dateTimePicker1.TabIndex = 5;
+            this.CreacionDateTimePicker.CustomFormat = "dd/MM/yyyy";
+            this.CreacionDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.CreacionDateTimePicker.Location = new System.Drawing.Point(221, 130);
+            this.CreacionDateTimePicker.Name = "CreacionDateTimePicker";
+            this.CreacionDateTimePicker.Size = new System.Drawing.Size(150, 27);
+            this.CreacionDateTimePicker.TabIndex = 5;
             // 
-            // numericUpDown1
+            // RolIdNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(221, 22);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(150, 27);
-            this.numericUpDown1.TabIndex = 6;
+            this.RolIdNumericUpDown.Location = new System.Drawing.Point(221, 22);
+            this.RolIdNumericUpDown.Name = "RolIdNumericUpDown";
+            this.RolIdNumericUpDown.Size = new System.Drawing.Size(150, 27);
+            this.RolIdNumericUpDown.TabIndex = 6;
             // 
             // EliminarRolButton
             // 
@@ -104,6 +107,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.EliminarRolButton.Text = "Eliminar";
             this.EliminarRolButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.EliminarRolButton.UseVisualStyleBackColor = true;
+            this.EliminarRolButton.Click += new System.EventHandler(this.EliminarRolButton_Click);
             // 
             // GuardarRolButton
             // 
@@ -129,6 +133,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.NuevoRolButton.Text = "Nuevo";
             this.NuevoRolButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.NuevoRolButton.UseVisualStyleBackColor = true;
+            this.NuevoRolButton.Click += new System.EventHandler(this.NuevoRolButton_Click);
             // 
             // BuscarRolButton
             // 
@@ -138,6 +143,11 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.BuscarRolButton.Size = new System.Drawing.Size(35, 27);
             this.BuscarRolButton.TabIndex = 22;
             this.BuscarRolButton.UseVisualStyleBackColor = true;
+            this.BuscarRolButton.Click += new System.EventHandler(this.BuscarRolButton_Click);
+            // 
+            // RolErrorProvider
+            // 
+            this.RolErrorProvider.ContainerControl = this;
             // 
             // RegistroRoles
             // 
@@ -148,16 +158,17 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.Controls.Add(this.EliminarRolButton);
             this.Controls.Add(this.GuardarRolButton);
             this.Controls.Add(this.NuevoRolButton);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.RolIdNumericUpDown);
+            this.Controls.Add(this.CreacionDateTimePicker);
+            this.Controls.Add(this.DescripcionTextBox);
             this.Controls.Add(this.FechaCreacionLabel);
             this.Controls.Add(this.DescripcionLabel);
             this.Controls.Add(this.RolIdLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistroRoles";
             this.Text = "RegistroRoles";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RolIdNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RolErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,12 +179,13 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private System.Windows.Forms.Label RolIdLabel;
         private System.Windows.Forms.Label DescripcionLabel;
         private System.Windows.Forms.Label FechaCreacionLabel;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox DescripcionTextBox;
+        private System.Windows.Forms.DateTimePicker CreacionDateTimePicker;
+        private System.Windows.Forms.NumericUpDown RolIdNumericUpDown;
         private System.Windows.Forms.Button EliminarRolButton;
         private System.Windows.Forms.Button GuardarRolButton;
         private System.Windows.Forms.Button NuevoRolButton;
         private System.Windows.Forms.Button BuscarRolButton;
+        private System.Windows.Forms.ErrorProvider RolErrorProvider;
     }
 }

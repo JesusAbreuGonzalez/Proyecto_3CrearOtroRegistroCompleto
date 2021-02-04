@@ -36,49 +36,52 @@ namespace Proyecto3CrearOtroRegistroCompleto
 
         //Esta funcion sirve para verificar que no falte ningun campo obligatorio por llenar 
         //y que la clave y su confirmacion sean iguales
-        void Validar(ref bool interruptor)
+        private bool Validar()
         {
+            bool paso = true;
             if (UsuarioIdNumericUpDown.Value == 0)
             {
                 UsuarioErrorProvider.SetError(UsuarioIdNumericUpDown, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (nombresTextBox.Text == "")
             {
                 UsuarioErrorProvider.SetError(nombresTextBox, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (claveTextBox.Text == "")
             {
                 UsuarioErrorProvider.SetError(claveTextBox, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (confirmarTextBox.Text == "")
             {
                 UsuarioErrorProvider.SetError(confirmarTextBox, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (emailTextBox.Text == "")
             {
                 UsuarioErrorProvider.SetError(emailTextBox, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (RolComboBox.Text == "")
             {
                 UsuarioErrorProvider.SetError(RolComboBox, "Campo obligatorio");
-                interruptor = true;
+                paso = false;
             }
 
             if (confirmarTextBox.Text != claveTextBox.Text && confirmarTextBox.Text != "")
             {
                 UsuarioErrorProvider.SetError(confirmarTextBox, "Claves no coinciden");
-                interruptor = true;
+                paso = false;
             }
+
+            return paso;
         }
 
         private Usuarios LlenaClase()
@@ -115,6 +118,12 @@ namespace Proyecto3CrearOtroRegistroCompleto
                 return false;
         }
 
+        private bool ExisteEnBaseDeDatos()
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar((int)UsuarioIdNumericUpDown.Value);
+            return (usuarios != null);
+        }
+
 
         private void ClaveLabel_Click(object sender, EventArgs e)
         {
@@ -140,7 +149,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             if(usuarios != null)
             {
                 MessageBox.Show("Usuario encontrado");
-                LlenaCampo(usuarios);
+                LLenaCampos(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
             }
             else
             {
@@ -153,7 +162,25 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento de boton guardar y sirve para almacenar o modificar los datos de los usuarios que se registren
         private void GuardarButton_Click(object sender, EventArgs e)
         {
-            
+            Usuarios usuarios;
+            bool paso = false;
+
+            if (!Validar())
+                return;
+            usuarios = LlenaClase();
+
+            //Determinar si es guardar o modificar
+            if (UsuarioIdNumericUpDown.Value != 0)
+                paso = UsuariosBLL.Guardar(usuarios);
+            else
+            {
+                if(!ExisteEnBaseDeDatos())
+                {
+                    MessageBox.Show("No se puede modificar un usuario que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                paso = UsuariosBLL.Modificar(usuarios);
+            }
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
