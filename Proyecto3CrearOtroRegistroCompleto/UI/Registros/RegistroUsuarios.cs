@@ -111,7 +111,22 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton Buscar, sirve para buscar los datos correspondientes al id ingresado
         private void BuscarButton_Click(object sender, EventArgs e)
         {
-         
+            int id;
+            Usuarios usuarios = new Usuarios();
+            int.TryParse(UsuarioIdNumericUpDown.Text, out id);
+            
+            Limpiar();
+            usuarios = UsuariosBLL.Buscar(id);
+            if(usuarios != null)
+            {
+                MessageBox.Show("Usuario encontrado");
+                LlenaCampo(usuarios);
+            }
+            else
+            {
+                MessageBox.Show("Usuario no encontrado");
+            }
+
         }
                 
 
@@ -124,7 +139,14 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
         private void EliminarButton_Click(object sender, EventArgs e)
         {
-           
+            UsuarioErrorProvider.Clear();
+            int id;
+            int.TryParse(UsuarioIdNumericUpDown.Text, out id);
+            Limpiar();
+            if (UsuariosBLL.Eliminar(id))
+                MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                UsuarioErrorProvider.SetError(UsuarioIdNumericUpDown, "No se puede eliminar un usuario que no existe");
         }
 
         private void RegistroUsuarios_Load(object sender, EventArgs e)
