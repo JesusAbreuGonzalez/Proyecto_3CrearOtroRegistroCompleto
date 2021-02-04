@@ -1,4 +1,5 @@
-﻿using Proyecto3CrearOtroRegistroCompleto.DAL;
+﻿using Proyecto3CrearOtroRegistroCompleto.BLL;
+using Proyecto3CrearOtroRegistroCompleto.DAL;
 using Proyecto3CrearOtroRegistroCompleto.Entidades;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace Proyecto3CrearOtroRegistroCompleto
             IngresoDateTimePicker.Value = DateTime.Now;
             activoCheckBox.Checked = false;
         }
+
+        
 
         //Esta funcion sirve para verificar que no falte ningun campo obligatorio por llenar 
         //y que la clave y su confirmacion sean iguales
@@ -112,7 +115,9 @@ namespace Proyecto3CrearOtroRegistroCompleto
 
         private void RegistroUsuarios_Load(object sender, EventArgs e)
         {
-
+            RolComboBox.DataSource = RolesBLL.GetRoles();
+            RolComboBox.DisplayMember = "descripcion";
+            RolComboBox.ValueMember = "rolId";
         }
     }
 }
