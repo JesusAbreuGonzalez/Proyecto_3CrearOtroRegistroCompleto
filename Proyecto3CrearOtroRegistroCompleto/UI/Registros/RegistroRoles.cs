@@ -50,7 +50,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private Roles LlenaClase()
         {
             Roles roles = new Roles();
-            roles.RolId = Convert.ToInt32(RolIdNumericUpDown.Value);
+            roles.RolId = (int)RolIdNumericUpDown.Value;
             roles.Descripcion = DescripcionTextBox.Text;
             roles.FechaCreacion = CreacionDateTimePicker.Value;
 
@@ -59,13 +59,13 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
         private bool LLenaCampos(int id)
         {
-            Roles roles = RolesBLL.Buscar(Convert.ToInt32(RolIdNumericUpDown.Value));
+            Roles roles = RolesBLL.Buscar(id);
 
             if (roles != null)
             {
-                //El id no lo llenamos porque ya estaria lleno
                 RolIdNumericUpDown.Value = roles.RolId;
                 DescripcionTextBox.Text = roles.Descripcion;
+                CreacionDateTimePicker.Value = roles.FechaCreacion;
                 return true;
             }
             else
@@ -91,14 +91,14 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         {
             int id;
             Roles roles = new Roles();
-            int.TryParse(RolIdNumericUpDown.Text, out id);
+            id = (int)RolIdNumericUpDown.Value;
 
             Limpiar();
             roles = RolesBLL.Buscar(id);
             if (roles != null)
             {
+                LLenaCampos(id);
                 MessageBox.Show("Usuario encontrado");
-                LLenaCampos(Convert.ToInt32(RolIdNumericUpDown.Value));
             }
             else
             {
@@ -119,7 +119,11 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
             //Determinar si es guardar o modificar
             if (RolIdNumericUpDown.Value != 0)
+            {
                 paso = RolesBLL.Guardar(roles);
+                MessageBox.Show("El rol ha sido guardado con exito");
+
+            }
             else
             {
                 if (!ExisteEnBaseDeDatos())

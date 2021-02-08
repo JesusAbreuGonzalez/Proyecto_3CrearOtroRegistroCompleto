@@ -130,7 +130,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             }
             return roles;
         }
-
+        
         public static List<Roles> GetList(Expression<Func<Roles, bool>> criterio)
         {
             List<Roles> lista = new List<Roles>();
@@ -142,7 +142,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally

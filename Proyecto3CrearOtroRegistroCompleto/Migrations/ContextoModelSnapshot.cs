@@ -57,28 +57,23 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Rol")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("RolId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("UsuarioId");
 
-                    b.HasIndex("RolId");
-
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Usuarios", b =>
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", b =>
                 {
-                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", "rol")
+                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", "Rol")
                         .WithMany()
                         .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("rol");
+                    b.Navigation("Rol");
                 });
 #pragma warning restore 612, 618
         }

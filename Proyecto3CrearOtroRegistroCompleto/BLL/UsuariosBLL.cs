@@ -85,6 +85,39 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return encontrado;
         }
 
+        public static bool ExisteAlias(int id, string alias)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
+
+            try
+            {
+                encontrado = contexto.Usuarios.Any(e => e.Alias == alias);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            if(encontrado)
+            {
+                Usuarios usuarios = Buscar(id);
+                if (usuarios == null)
+                    return true;
+
+                if (usuarios.Alias == alias)
+                    encontrado = false;
+            }
+
+            return encontrado;
+        }
+
+
 
         public static bool Eliminar(int id)
         {
@@ -132,7 +165,46 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return usuarios;
         }
 
-       
+        public static List<Usuarios>GetUsuarios()
+        {
+            List<Usuarios> lista = new List<Usuarios>();
+            Contexto contexto = new Contexto();
 
+            try
+            {
+                lista = contexto.Usuarios.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
+        }
+
+        public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> criterio)
+        {
+            List<Usuarios> lista = new List<Usuarios>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                lista = contexto.Usuarios.Where(criterio).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
+        }
     }
 }

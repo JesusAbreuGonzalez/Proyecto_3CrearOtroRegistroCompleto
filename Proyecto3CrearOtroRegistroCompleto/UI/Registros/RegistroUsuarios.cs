@@ -18,6 +18,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         public RegistroUsuarios()
         {
             InitializeComponent();
+
         }
 
         private void Limpiar()
@@ -87,11 +88,12 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private Usuarios LlenaClase()
         {
             Usuarios usuarios = new Usuarios();
-            usuarios.UsuarioId = Convert.ToInt32(UsuarioIdNumericUpDown.Value);
+            usuarios.UsuarioId = (int)UsuarioIdNumericUpDown.Value;
             usuarios.Nombres = nombresTextBox.Text;
             usuarios.Alias = aliasTextBox.Text;
             usuarios.Clave = claveTextBox.Text;
-            usuarios.Rol = RolComboBox.Text;
+            usuarios.RolId = RolComboBox.SelectedIndex;
+            usuarios.Email = emailTextBox.Text;
             usuarios.FechaIngreso = IngresoDateTimePicker.Value;
             usuarios.Activo = activoCheckBox.Checked;
 
@@ -100,15 +102,17 @@ namespace Proyecto3CrearOtroRegistroCompleto
 
         private bool LLenaCampos(int id)
         {
-            Usuarios usuarios = UsuariosBLL.Buscar(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
 
             if (usuarios != null)
             {
-                //El id no lo llenamos porque ya estaria lleno
-                RolComboBox.Text = Convert.ToString(usuarios.RolId);
+                
+                UsuarioIdNumericUpDown.Value = usuarios.UsuarioId;
+                RolComboBox.SelectedIndex = usuarios.RolId;
                 nombresTextBox.Text = usuarios.Nombres;
                 aliasTextBox.Text = usuarios.Alias;
                 claveTextBox.Text = usuarios.Clave;
+                confirmarTextBox.Text = usuarios.Clave;
                 activoCheckBox.Checked = usuarios.Activo;
                 emailTextBox.Text = usuarios.Email;
                 IngresoDateTimePicker.Value = usuarios.FechaIngreso;
@@ -142,14 +146,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
         {
             int id;
             Usuarios usuarios = new Usuarios();
-            int.TryParse(UsuarioIdNumericUpDown.Text, out id);
+            id = (int)UsuarioIdNumericUpDown.Value;
             
-            Limpiar();
             usuarios = UsuariosBLL.Buscar(id);
             if(usuarios != null)
             {
+                LLenaCampos(Convert.ToInt32(id));
                 MessageBox.Show("Usuario encontrado");
-                LLenaCampos(Convert.ToInt32(UsuarioIdNumericUpDown.Value));
             }
             else
             {
@@ -170,9 +173,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
             usuarios = LlenaClase();
 
             //Determinar si es guardar o modificar
-            if (UsuarioIdNumericUpDown.Value != 0)
+           /* if (UsuarioIdNumericUpDown.Value != 0)
+            {*/
                 paso = UsuariosBLL.Guardar(usuarios);
-            else
+                MessageBox.Show("El usuario ha sido guardado con exito");
+           // }
+                
+            /*else
             {
                 if(!ExisteEnBaseDeDatos())
                 {
@@ -180,7 +187,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
                     return;
                 }
                 paso = UsuariosBLL.Modificar(usuarios);
-            }
+            }*/
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
@@ -188,7 +195,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
         {
             UsuarioErrorProvider.Clear();
             int id;
-            int.TryParse(UsuarioIdNumericUpDown.Text, out id);
+            id = (int)UsuarioIdNumericUpDown.Value;
             Limpiar();
             if (UsuariosBLL.Eliminar(id))
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -199,8 +206,8 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private void RegistroUsuarios_Load(object sender, EventArgs e)
         {
             RolComboBox.DataSource = RolesBLL.GetRoles();
-            RolComboBox.DisplayMember = "descripcion";
-            RolComboBox.ValueMember = "rolId";
+            RolComboBox.DisplayMember = "Descripcion";
+            RolComboBox.ValueMember = "RolId";
         }
     }
 }

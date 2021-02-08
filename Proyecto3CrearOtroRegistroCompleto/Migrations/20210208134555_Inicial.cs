@@ -33,33 +33,21 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
                     Email = table.Column<string>(type: "TEXT", nullable: true),
                     Clave = table.Column<string>(type: "TEXT", nullable: true),
                     Activo = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Rol = table.Column<string>(type: "TEXT", nullable: true),
                     RolId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
-                    table.ForeignKey(
-                        name: "FK_Usuarios_Roles_RolId",
-                        column: x => x.RolId,
-                        principalTable: "Roles",
-                        principalColumn: "RolId",
-                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_RolId",
-                table: "Usuarios",
-                column: "RolId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Usuarios");
         }
     }
 }
