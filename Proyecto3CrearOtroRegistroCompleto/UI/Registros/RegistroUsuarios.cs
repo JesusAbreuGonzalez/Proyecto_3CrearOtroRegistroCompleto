@@ -173,13 +173,13 @@ namespace Proyecto3CrearOtroRegistroCompleto
             usuarios = LlenaClase();
 
             //Determinar si es guardar o modificar
-           /* if (UsuarioIdNumericUpDown.Value != 0)
-            {*/
+            if (UsuarioIdNumericUpDown.Value != 0)
+            {
                 paso = UsuariosBLL.Guardar(usuarios);
                 MessageBox.Show("El usuario ha sido guardado con exito");
-           // }
+            }
                 
-            /*else
+            else
             {
                 if(!ExisteEnBaseDeDatos())
                 {
@@ -187,7 +187,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
                     return;
                 }
                 paso = UsuariosBLL.Modificar(usuarios);
-            }*/
+            }
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
