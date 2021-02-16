@@ -33,6 +33,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.label1 = new System.Windows.Forms.Label();
             this.RegistroRolesButton = new System.Windows.Forms.Button();
             this.RegistroUsuariosButton = new System.Windows.Forms.Button();
+            this.PermisosButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +58,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             // RegistroUsuariosButton
             // 
-            this.RegistroUsuariosButton.Location = new System.Drawing.Point(301, 99);
+            this.RegistroUsuariosButton.Location = new System.Drawing.Point(318, 99);
             this.RegistroUsuariosButton.Name = "RegistroUsuariosButton";
             this.RegistroUsuariosButton.Size = new System.Drawing.Size(123, 75);
             this.RegistroUsuariosButton.TabIndex = 2;
@@ -65,11 +66,22 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.RegistroUsuariosButton.UseVisualStyleBackColor = true;
             this.RegistroUsuariosButton.Click += new System.EventHandler(this.RegistroUsuariosButton_Click);
             // 
+            // PermisosButton
+            // 
+            this.PermisosButton.Location = new System.Drawing.Point(172, 99);
+            this.PermisosButton.Name = "PermisosButton";
+            this.PermisosButton.Size = new System.Drawing.Size(123, 75);
+            this.PermisosButton.TabIndex = 3;
+            this.PermisosButton.Text = "Registro de permisos";
+            this.PermisosButton.UseVisualStyleBackColor = true;
+            this.PermisosButton.Click += new System.EventHandler(this.PermisosButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 195);
+            this.ClientSize = new System.Drawing.Size(466, 197);
+            this.Controls.Add(this.PermisosButton);
             this.Controls.Add(this.RegistroUsuariosButton);
             this.Controls.Add(this.RegistroRolesButton);
             this.Controls.Add(this.label1);
@@ -86,5 +98,6 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RegistroRolesButton;
         private System.Windows.Forms.Button RegistroUsuariosButton;
+        private System.Windows.Forms.Button PermisosButton;
     }
 }

@@ -28,5 +28,11 @@ namespace Proyecto3CrearOtroRegistroCompleto
             RegistroUsuarios registroUsuarios = new RegistroUsuarios();
             registroUsuarios.Show();
         }
+
+        private void PermisosButton_Click(object sender, EventArgs e)
+        {
+            UI.Registros.RegistroPermisos registroPermisos = new UI.Registros.RegistroPermisos();
+            registroPermisos.Show();
+        }
     }
 }
