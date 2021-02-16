@@ -63,7 +63,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             if (permisos != null)
             {
                 PermisoIdNumericUpDown.Value = permisos.PermisoId;
-                DescripcionTextBox.Text = permisos.Descripcion;ando DateTImaePicker
+                DescripcionTextBox.Text = permisos.Descripcion;
                 return true;
             }
             else
