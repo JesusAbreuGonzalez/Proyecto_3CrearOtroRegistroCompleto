@@ -1,7 +1,7 @@
 ﻿
 namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 {
-    partial class RegistroPermisos
+    partial class RPermisos
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroPermisos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPermisos));
             this.BuscarPermisoButton = new System.Windows.Forms.Button();
             this.EliminarPermisoButton = new System.Windows.Forms.Button();
             this.GuardarPermisoButton = new System.Windows.Forms.Button();

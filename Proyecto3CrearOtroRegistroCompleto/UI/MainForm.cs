@@ -19,19 +19,19 @@ namespace Proyecto3CrearOtroRegistroCompleto
 
         private void RegistroRolesButton_Click(object sender, EventArgs e)
         {
-            UI.Registros.RegistroRoles registroRoles = new UI.Registros.RegistroRoles();
+            UI.Registros.RRoles registroRoles = new UI.Registros.RRoles();
             registroRoles.Show();
         }
 
         private void RegistroUsuariosButton_Click(object sender, EventArgs e)
         {
-            RegistroUsuarios registroUsuarios = new RegistroUsuarios();
+            RUsuarios registroUsuarios = new RUsuarios();
             registroUsuarios.Show();
         }
 
         private void PermisosButton_Click(object sender, EventArgs e)
         {
-            UI.Registros.RegistroPermisos registroPermisos = new UI.Registros.RegistroPermisos();
+            UI.Registros.RPermisos registroPermisos = new UI.Registros.RPermisos();
             registroPermisos.Show();
         }
     }

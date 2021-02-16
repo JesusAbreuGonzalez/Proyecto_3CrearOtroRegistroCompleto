@@ -12,17 +12,17 @@ using System.Windows.Forms;
 
 namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 {
-    public partial class RegistroRoles : Form
+    public partial class RPermisos : Form
     {
-        public RegistroRoles()
+        public RPermisos()
         {
             InitializeComponent();
         }
 
+        
         private void Limpiar()
         {
-            RolIdNumericUpDown.Value = 0;
-            CreacionDateTimePicker.Value = DateTime.Now;
+            PermisoIdNumericUpDown.Value = 0;
             DescripcionTextBox.Clear();
         }
 
@@ -32,40 +32,38 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private bool Validar()
         {
             bool paso = true;
-            if (RolIdNumericUpDown.Value == 0)
+            if (PermisoIdNumericUpDown.Value == 0)
             {
-                RolErrorProvider.SetError(RolIdNumericUpDown, "Campo obligatorio");
+                PermisoErrorProvider.SetError(PermisoIdNumericUpDown, "Campo obligatorio");
                 paso = false;
             }
 
             if (DescripcionTextBox.Text == "")
             {
-                RolErrorProvider.SetError(DescripcionTextBox, "Campo obligatorio");
+                PermisoErrorProvider.SetError(DescripcionTextBox, "Campo obligatorio");
                 paso = false;
             }
 
             return paso;
         }
 
-        private Roles LlenaClase()
+        private Permisos LlenaClase()
         {
-            Roles roles = new Roles();
-            roles.RolId = (int)RolIdNumericUpDown.Value;
-            roles.Descripcion = DescripcionTextBox.Text;
-            roles.FechaCreacion = CreacionDateTimePicker.Value;
+            Permisos permisos = new Permisos();
+            permisos.PermisoId = (int)PermisoIdNumericUpDown.Value;
+            permisos.Descripcion = DescripcionTextBox.Text;
 
-            return roles;
+            return permisos;
         }
 
         private bool LLenaCampos(int id)
         {
-            Roles roles = RolesBLL.Buscar(id);
+            Permisos permisos = PermisosBLL.Buscar(id);
 
-            if (roles != null)
+            if (permisos != null)
             {
-                RolIdNumericUpDown.Value = roles.RolId;
-                DescripcionTextBox.Text = roles.Descripcion;
-                CreacionDateTimePicker.Value = roles.FechaCreacion;
+                PermisoIdNumericUpDown.Value = permisos.PermisoId;
+                DescripcionTextBox.Text = permisos.Descripcion;
                 return true;
             }
             else
@@ -74,28 +72,28 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
         private bool ExisteEnBaseDeDatos()
         {
-            Roles roles = RolesBLL.Buscar((int)RolIdNumericUpDown.Value);
-            return (roles != null);
+            Permisos permisos = PermisosBLL.Buscar((int)PermisoIdNumericUpDown.Value);
+            return (permisos != null);
         }
 
 
         //Este es el evento del boton Nuevo, sirve para limpiar los campos y errores
 
-        private void NuevoRolButton_Click(object sender, EventArgs e)
+        private void NuevoPermisoButton_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
 
         //Este es el evento del boton Buscar, sirve para buscar los datos correspondientes al id ingresado
-        private void BuscarRolButton_Click(object sender, EventArgs e)
+        private void BuscarPermisoButton_Click(object sender, EventArgs e)
         {
             int id;
-            Roles roles = new Roles();
-            id = (int)RolIdNumericUpDown.Value;
+            Permisos permisos = new Permisos();
+            id = (int)PermisoIdNumericUpDown.Value;
 
             Limpiar();
-            roles = RolesBLL.Buscar(id);
-            if (roles != null)
+            permisos = PermisosBLL.Buscar(id);
+            if (permisos != null)
             {
                 LLenaCampos(id);
                 MessageBox.Show("Usuario encontrado");
@@ -105,23 +103,23 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
                 MessageBox.Show("Usuario no encontrado");
             }
         }
-       
 
-        //Este es el evento de boton guardar y sirve para almacenar o modificar los datos de los roles que se registren
-        private void GuardarRolButton_Click(object sender, EventArgs e)
+
+        //Este es el evento de boton guardar y sirve para almacenar o modificar los datos de los permisos que se registren
+        private void GuardarPermisoButton_Click(object sender, EventArgs e)
         {
-            Roles roles;
+            Permisos permisos;
             bool paso = false;
 
             if (!Validar())
                 return;
-            roles = LlenaClase();
+            permisos = LlenaClase();
 
             //Determinar si es guardar o modificar
-            if (RolIdNumericUpDown.Value != 0)
+            if (PermisoIdNumericUpDown.Value != 0)
             {
-                paso = RolesBLL.Guardar(roles);
-                MessageBox.Show("El rol ha sido guardado con exito");
+                paso = PermisosBLL.Guardar(permisos);
+                MessageBox.Show("El permiso ha sido guardado con exito");
 
             }
             else
@@ -131,21 +129,24 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
                     MessageBox.Show("No se puede modificar un usuario que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                paso = RolesBLL.Modificar(roles);
+                paso = PermisosBLL.Modificar(permisos);
             }
+
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
-        private void EliminarRolButton_Click(object sender, EventArgs e)
+        private void EliminarPermisoButton_Click(object sender, EventArgs e)
         {
-            RolErrorProvider.Clear();
+            PermisoErrorProvider.Clear();
             int id;
-            int.TryParse(RolIdNumericUpDown.Text, out id);
+            int.TryParse(PermisoIdNumericUpDown.Text, out id);
             Limpiar();
-            if (RolesBLL.Eliminar(id))
+            if (PermisosBLL.Eliminar(id))
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                RolErrorProvider.SetError(RolIdNumericUpDown, "No se puede eliminar un usuario que no existe");
+                PermisoErrorProvider.SetError(PermisoIdNumericUpDown, "No se puede eliminar un usuario que no existe");
         }
+
+        
     }
 }
