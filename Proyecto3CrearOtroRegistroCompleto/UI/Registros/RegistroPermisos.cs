@@ -23,7 +23,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private void Limpiar()
         {
             PermisoIdNumericUpDown.Value = 0;
-            CreacionDateTimePicker.Value = DateTime.Now;
             DescripcionTextBox.Clear();
         }
 
@@ -53,7 +52,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             Permisos permisos = new Permisos();
             permisos.PermisoId = (int)PermisoIdNumericUpDown.Value;
             permisos.Descripcion = DescripcionTextBox.Text;
-            permisos.FechaCreacion = CreacionDateTimePicker.Value;
 
             return permisos;
         }
@@ -65,8 +63,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             if (permisos != null)
             {
                 PermisoIdNumericUpDown.Value = permisos.PermisoId;
-                DescripcionTextBox.Text = permisos.Descripcion;
-                CreacionDateTimePicker.Value = permisos.FechaCreacion;
+                DescripcionTextBox.Text = permisos.Descripcion;ando DateTImaePicker
                 return true;
             }
             else
