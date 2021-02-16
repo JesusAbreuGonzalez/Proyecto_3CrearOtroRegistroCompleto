@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UI\Reportes\**" />
+    <EmbeddedResource Remove="UI\Reportes\**" />
+    <None Remove="UI\Reportes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="microsoft.entityFrameWorkCore.SQLITE" Version="5.0.2" />
     <PackageReference Include="microsoft.entityFrameWorkCore.Tools" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -28,10 +34,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UI\Reportes\" />
   </ItemGroup>
 
   <ItemGroup>
