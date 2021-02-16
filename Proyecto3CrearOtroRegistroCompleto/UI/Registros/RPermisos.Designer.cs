@@ -47,9 +47,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // BuscarPermisoButton
             // 
             this.BuscarPermisoButton.Image = ((System.Drawing.Image)(resources.GetObject("BuscarPermisoButton.Image")));
-            this.BuscarPermisoButton.Location = new System.Drawing.Point(372, 25);
+            this.BuscarPermisoButton.Location = new System.Drawing.Point(326, 19);
+            this.BuscarPermisoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BuscarPermisoButton.Name = "BuscarPermisoButton";
-            this.BuscarPermisoButton.Size = new System.Drawing.Size(35, 27);
+            this.BuscarPermisoButton.Size = new System.Drawing.Size(31, 20);
             this.BuscarPermisoButton.TabIndex = 32;
             this.BuscarPermisoButton.UseVisualStyleBackColor = true;
             this.BuscarPermisoButton.Click += new System.EventHandler(this.BuscarPermisoButton_Click);
@@ -58,9 +59,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             this.EliminarPermisoButton.Image = ((System.Drawing.Image)(resources.GetObject("EliminarPermisoButton.Image")));
             this.EliminarPermisoButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.EliminarPermisoButton.Location = new System.Drawing.Point(319, 134);
+            this.EliminarPermisoButton.Location = new System.Drawing.Point(279, 100);
+            this.EliminarPermisoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EliminarPermisoButton.Name = "EliminarPermisoButton";
-            this.EliminarPermisoButton.Size = new System.Drawing.Size(90, 53);
+            this.EliminarPermisoButton.Size = new System.Drawing.Size(79, 40);
             this.EliminarPermisoButton.TabIndex = 31;
             this.EliminarPermisoButton.Text = "Eliminar";
             this.EliminarPermisoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -71,9 +73,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             this.GuardarPermisoButton.Image = ((System.Drawing.Image)(resources.GetObject("GuardarPermisoButton.Image")));
             this.GuardarPermisoButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.GuardarPermisoButton.Location = new System.Drawing.Point(167, 134);
+            this.GuardarPermisoButton.Location = new System.Drawing.Point(146, 100);
+            this.GuardarPermisoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GuardarPermisoButton.Name = "GuardarPermisoButton";
-            this.GuardarPermisoButton.Size = new System.Drawing.Size(90, 53);
+            this.GuardarPermisoButton.Size = new System.Drawing.Size(79, 40);
             this.GuardarPermisoButton.TabIndex = 30;
             this.GuardarPermisoButton.Text = "Guardar";
             this.GuardarPermisoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -84,9 +87,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             this.NuevoPermisoButton.Image = ((System.Drawing.Image)(resources.GetObject("NuevoPermisoButton.Image")));
             this.NuevoPermisoButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.NuevoPermisoButton.Location = new System.Drawing.Point(15, 134);
+            this.NuevoPermisoButton.Location = new System.Drawing.Point(13, 100);
+            this.NuevoPermisoButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NuevoPermisoButton.Name = "NuevoPermisoButton";
-            this.NuevoPermisoButton.Size = new System.Drawing.Size(90, 53);
+            this.NuevoPermisoButton.Size = new System.Drawing.Size(79, 40);
             this.NuevoPermisoButton.TabIndex = 29;
             this.NuevoPermisoButton.Text = "Nuevo";
             this.NuevoPermisoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -95,33 +99,35 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             // PermisoIdNumericUpDown
             // 
-            this.PermisoIdNumericUpDown.Location = new System.Drawing.Point(216, 26);
+            this.PermisoIdNumericUpDown.Location = new System.Drawing.Point(189, 20);
+            this.PermisoIdNumericUpDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PermisoIdNumericUpDown.Name = "PermisoIdNumericUpDown";
-            this.PermisoIdNumericUpDown.Size = new System.Drawing.Size(150, 27);
+            this.PermisoIdNumericUpDown.Size = new System.Drawing.Size(131, 23);
             this.PermisoIdNumericUpDown.TabIndex = 28;
             // 
             // DescripcionTextBox
             // 
-            this.DescripcionTextBox.Location = new System.Drawing.Point(216, 80);
+            this.DescripcionTextBox.Location = new System.Drawing.Point(189, 60);
+            this.DescripcionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DescripcionTextBox.Name = "DescripcionTextBox";
-            this.DescripcionTextBox.Size = new System.Drawing.Size(150, 27);
+            this.DescripcionTextBox.Size = new System.Drawing.Size(132, 23);
             this.DescripcionTextBox.TabIndex = 26;
             // 
             // DescripcionLabel
             // 
             this.DescripcionLabel.AutoSize = true;
-            this.DescripcionLabel.Location = new System.Drawing.Point(12, 83);
+            this.DescripcionLabel.Location = new System.Drawing.Point(10, 62);
             this.DescripcionLabel.Name = "DescripcionLabel";
-            this.DescripcionLabel.Size = new System.Drawing.Size(87, 20);
+            this.DescripcionLabel.Size = new System.Drawing.Size(69, 15);
             this.DescripcionLabel.TabIndex = 24;
             this.DescripcionLabel.Text = "Descripción";
             // 
             // RolIdLabel
             // 
             this.RolIdLabel.AutoSize = true;
-            this.RolIdLabel.Location = new System.Drawing.Point(12, 28);
+            this.RolIdLabel.Location = new System.Drawing.Point(10, 21);
             this.RolIdLabel.Name = "RolIdLabel";
-            this.RolIdLabel.Size = new System.Drawing.Size(86, 20);
+            this.RolIdLabel.Size = new System.Drawing.Size(69, 15);
             this.RolIdLabel.TabIndex = 23;
             this.RolIdLabel.Text = "Permisos ID";
             // 
@@ -129,11 +135,11 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             this.PermisoErrorProvider.ContainerControl = this;
             // 
-            // RegistroPermisos
+            // RPermisos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 205);
+            this.ClientSize = new System.Drawing.Size(372, 154);
             this.Controls.Add(this.BuscarPermisoButton);
             this.Controls.Add(this.EliminarPermisoButton);
             this.Controls.Add(this.GuardarPermisoButton);
@@ -142,7 +148,8 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.Controls.Add(this.DescripcionTextBox);
             this.Controls.Add(this.DescripcionLabel);
             this.Controls.Add(this.RolIdLabel);
-            this.Name = "RegistroPermisos";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "RPermisos";
             this.Text = "RegistroPermisos";
             ((System.ComponentModel.ISupportInitialize)(this.PermisoIdNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PermisoErrorProvider)).EndInit();

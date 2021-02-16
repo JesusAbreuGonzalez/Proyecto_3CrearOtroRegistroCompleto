@@ -34,5 +34,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             UI.Registros.RPermisos registroPermisos = new UI.Registros.RPermisos();
             registroPermisos.Show();
         }
+
+        
     }
 }

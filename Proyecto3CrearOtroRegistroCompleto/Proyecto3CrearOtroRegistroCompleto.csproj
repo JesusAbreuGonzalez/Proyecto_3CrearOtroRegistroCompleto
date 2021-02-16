@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -6,6 +6,12 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UI\Reportes\**" />
+    <EmbeddedResource Remove="UI\Reportes\**" />
+    <None Remove="UI\Reportes\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityFrameWorkCore.SQLITE" Version="5.0.2" />
@@ -28,10 +34,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UI\Reportes\" />
   </ItemGroup>
 
   <ItemGroup>
