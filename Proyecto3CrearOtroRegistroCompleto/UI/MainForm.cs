@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto3CrearOtroRegistroCompleto.UI.Registros;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,19 @@ namespace Proyecto3CrearOtroRegistroCompleto
         public MainForm()
         {
             InitializeComponent();
+            this.PermisostoolStripMenuItem.Click += new EventHandler(this.PermisostoolStripMenuItem_ItemClicked);
+        }
+
+        private void PermisostoolStripMenuItem_ItemClicked(object sender, EventArgs e)
+        {
+            var rPermisos = new rPermisos();
+            rPermisos.MdiParent = this;
+            rPermisos.Show();
         }
 
         private void RegistroRolesButton_Click(object sender, EventArgs e)
         {
-            UI.Registros.RRoles registroRoles = new UI.Registros.RRoles();
+            var registroRoles = new RRoles();
             registroRoles.Show();
         }
 
@@ -31,10 +40,18 @@ namespace Proyecto3CrearOtroRegistroCompleto
 
         private void PermisosButton_Click(object sender, EventArgs e)
         {
-            UI.Registros.RPermisos registroPermisos = new UI.Registros.RPermisos();
+            rPermisos registroPermisos = new rPermisos();
             registroPermisos.Show();
         }
 
-        
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

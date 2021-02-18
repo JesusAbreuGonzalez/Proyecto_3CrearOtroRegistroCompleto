@@ -16,5 +16,16 @@ namespace Proyecto3CrearOtroRegistroCompleto.DAL
         {
             optionsBuilder.UseSqlite("Data Source = GestionUsuarios.Db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Permisos>().HasData(
+                new Permisos() { PermisoId = 1, Descripcion = "Descuenta"},
+                new Permisos() { PermisoId = 2, Descripcion = "Vende" },
+                new Permisos() { PermisoId = 3, Descripcion = "Cobra" }
+            );
+        }
     }
 }
