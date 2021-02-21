@@ -17,6 +17,8 @@ namespace Proyecto3CrearOtroRegistroCompleto
         {
             InitializeComponent();
             this.PermisostoolStripMenuItem.Click += new EventHandler(this.PermisostoolStripMenuItem_ItemClicked);
+            this.UsuariostoolStripMenuItem.Click += new EventHandler(this.UsuariostoolStripMenuItem_ItemClicked);
+            this.RolestoolStripMenuItem.Click += new EventHandler(this.RolestoolStripMenuItem_ItemClicked);
         }
 
         private void PermisostoolStripMenuItem_ItemClicked(object sender, EventArgs e)
@@ -26,15 +28,29 @@ namespace Proyecto3CrearOtroRegistroCompleto
             rPermisos.Show();
         }
 
+        private void UsuariostoolStripMenuItem_ItemClicked(object sender, EventArgs e)
+        {
+            var rUsuarios = new rUsuarios();
+            rUsuarios.MdiParent = this;
+            rUsuarios.Show();
+        }
+
+        private void RolestoolStripMenuItem_ItemClicked(object sender, EventArgs e)
+        {
+            var rRoles = new rRoles();
+            rRoles.MdiParent = this;
+            rRoles.Show();
+        }
+
         private void RegistroRolesButton_Click(object sender, EventArgs e)
         {
-            var registroRoles = new RRoles();
+            var registroRoles = new rRoles();
             registroRoles.Show();
         }
 
         private void RegistroUsuariosButton_Click(object sender, EventArgs e)
         {
-            RUsuarios registroUsuarios = new RUsuarios();
+            rUsuarios registroUsuarios = new rUsuarios();
             registroUsuarios.Show();
         }
 

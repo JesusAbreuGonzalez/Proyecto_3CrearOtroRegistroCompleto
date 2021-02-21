@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 {
-    public partial class RRoles : Form
+    public partial class rRoles : Form
     {
-        public RRoles()
+        public rRoles()
         {
             InitializeComponent();
         }

@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace Proyecto3CrearOtroRegistroCompleto
 {
-    public partial class RUsuarios : Form
+    public partial class rUsuarios : Form
     {
-        public RUsuarios()
+        public rUsuarios()
         {
             InitializeComponent();
 

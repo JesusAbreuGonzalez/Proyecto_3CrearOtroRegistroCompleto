@@ -1,7 +1,7 @@
 ﻿
 namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 {
-    partial class RRoles
+    partial class rRoles
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRoles));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rRoles));
             this.RolIdLabel = new System.Windows.Forms.Label();
             this.DescripcionLabel = new System.Windows.Forms.Label();
             this.DescripcionTextBox = new System.Windows.Forms.TextBox();
