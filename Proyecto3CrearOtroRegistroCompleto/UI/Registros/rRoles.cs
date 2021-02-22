@@ -27,16 +27,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         }
 
 
-        //Esta funcion sirve para verificar que no falte ningun campo obligatorio por llenar 
-        //y que la clave y su confirmacion sean iguales
+        //Esta funcion sirve para verificar que no falte ningun campo obligatorio por llenar
         private bool Validar()
         {
             bool paso = true;
-            if (RolIdNumericUpDown.Value == 0)
-            {
-                RolErrorProvider.SetError(RolIdNumericUpDown, "Campo obligatorio");
-                paso = false;
-            }
 
             if (DescripcionTextBox.Text == "")
             {
@@ -46,6 +40,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
             return paso;
         }
+
 
         private Roles LlenaClase()
         {
@@ -57,24 +52,17 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             return roles;
         }
 
-        private bool LLenaCampos(int id)
+        private void LLenaCampos(Roles roles)
         {
-            Roles roles = RolesBLL.Buscar(id);
-
-            if (roles != null)
-            {
-                RolIdNumericUpDown.Value = roles.RolId;
-                DescripcionTextBox.Text = roles.Descripcion;
-                CreacionDateTimePicker.Value = roles.FechaCreacion;
-                return true;
-            }
-            else
-                return false;
+            RolIdNumericUpDown.Value = roles.RolId;
+            DescripcionTextBox.Text = roles.Descripcion;
         }
+
 
         private bool ExisteEnBaseDeDatos()
         {
-            Roles roles = RolesBLL.Buscar((int)RolIdNumericUpDown.Value);
+            var roles = new Roles();
+            roles = RolesBLL.Buscar((int)RolIdNumericUpDown.Value);
             return (roles != null);
         }
 
@@ -89,20 +77,18 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         //Este es el evento del boton Buscar, sirve para buscar los datos correspondientes al id ingresado
         private void BuscarRolButton_Click(object sender, EventArgs e)
         {
-            int id;
             Roles roles = new Roles();
-            id = (int)RolIdNumericUpDown.Value;
+            int id = (int)RolIdNumericUpDown.Value;
 
             Limpiar();
             roles = RolesBLL.Buscar(id);
             if (roles != null)
             {
-                LLenaCampos(id);
-                MessageBox.Show("Usuario encontrado");
+                LLenaCampos(roles);
             }
             else
             {
-                MessageBox.Show("Usuario no encontrado");
+                MessageBox.Show("Rol no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
        
@@ -118,34 +104,41 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             roles = LlenaClase();
 
             //Determinar si es guardar o modificar
-            if (RolIdNumericUpDown.Value != 0)
+            if (RolIdNumericUpDown.Value == 0)
             {
-                paso = RolesBLL.Guardar(roles);
-                MessageBox.Show("El rol ha sido guardado con exito");
-
+                paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
             }
             else
             {
                 if (!ExisteEnBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un usuario que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se puede modificar un usuario que no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 paso = RolesBLL.Modificar(roles);
             }
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("El rol ha sido guardada!", "Logrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
         private void EliminarRolButton_Click(object sender, EventArgs e)
         {
+            int id = (int)RolIdNumericUpDown.Value;
             RolErrorProvider.Clear();
-            int id;
-            int.TryParse(RolIdNumericUpDown.Text, out id);
-            Limpiar();
+
             if (RolesBLL.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                MessageBox.Show("El rol ha sido eliminado", "Logrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar();
+            }
             else
-                RolErrorProvider.SetError(RolIdNumericUpDown, "No se puede eliminar un usuario que no existe");
+                RolErrorProvider.SetError(RolIdNumericUpDown, "Este Id no existe en la base de datos");
         }
     }
 }

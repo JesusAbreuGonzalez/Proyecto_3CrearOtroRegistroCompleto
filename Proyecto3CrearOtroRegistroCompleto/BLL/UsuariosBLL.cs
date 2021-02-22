@@ -12,12 +12,26 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 {
     public class UsuariosBLL
     {
-        public static bool Guardar(Usuarios usuarios)
+        public static bool ExisteAlias(string alias)
         {
-            if (!Existe(usuarios.UsuarioId))
-                return Insertar(usuarios);
-            else
-                return Modificar(usuarios);
+            bool encontrado = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                encontrado = contexto.Usuarios.Any(e => e.Alias.ToLower() == alias.ToLower());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
         }
 
         private static bool Insertar(Usuarios usuarios)
@@ -61,42 +75,24 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
 
-        public static bool Existe(int id)
+        public static bool Guardar(Usuarios usuarios, string nombre)
         {
+            bool paso = false;
             Contexto contexto = new Contexto();
-            bool encontrado = false;
 
             try
             {
-                encontrado = contexto.Usuarios.Any(e => e.UsuarioId == id);
+                if (ExisteAlias(nombre))
+                    return paso;
+                if (contexto.Usuarios.Add(usuarios) != null)
+                    paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
-
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return encontrado;
-        }
-
-        public static bool ExisteAlias(int id, string alias)
-        {
-            Contexto contexto = new Contexto();
-            bool encontrado = false;
-
-            try
-            {
-                encontrado = contexto.Usuarios.Any(e => e.Alias == alias);
-            }
-            catch (Exception)
-            {
-
                 throw;
             }
             finally
@@ -104,20 +100,8 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
                 contexto.Dispose();
             }
 
-            if(encontrado)
-            {
-                Usuarios usuarios = Buscar(id);
-                if (usuarios == null)
-                    return true;
-
-                if (usuarios.Alias == alias)
-                    encontrado = false;
-            }
-
-            return encontrado;
+            return paso;
         }
-
-
 
         public static bool Eliminar(int id)
         {
@@ -164,7 +148,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             }
             return usuarios;
         }
-
         public static List<Usuarios>GetUsuarios()
         {
             List<Usuarios> lista = new List<Usuarios>();

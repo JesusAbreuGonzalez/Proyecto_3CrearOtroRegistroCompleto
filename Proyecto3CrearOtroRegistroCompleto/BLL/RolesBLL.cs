@@ -12,23 +12,14 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 {
     public class RolesBLL
     {
-        public static bool Guardar(Roles roles)
+        public static bool ExisteRol(string descripcion)
         {
-            if (!Existe(roles.RolId))
-                return Insertar(roles);
-            else
-                return Modificar(roles);
-        }
-
-        private static bool Insertar(Roles roles)
-        {
-            bool paso = false;
+            bool encontrado = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                contexto.Roles.Add(roles);
-                paso = contexto.SaveChanges() > 0;
+                encontrado = contexto.Roles.Any(e => e.Descripcion.ToLower() == descripcion.ToLower());
             }
             catch (Exception)
             {
@@ -39,6 +30,31 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
+            return encontrado;
+        }
+
+        public static bool Guardar(Roles roles, string descipcion)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                if (ExisteRol(descipcion))
+                    return paso;
+                if (contexto.Roles.Add(roles) != null)
+                    paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
             return paso;
         }
 
@@ -49,88 +65,71 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 
             try
             {
+                contexto.Database.ExecuteSqlRaw($"Delete FROM OrdenesDetalle Where RolId = {roles.RolId}");
+                foreach (var anterior in roles.RolesDetalle)
+                {
+                    contexto.Entry(anterior).State = EntityState.Added;
+                }
                 contexto.Entry(roles).State = EntityState.Modified;
-                paso = contexto.SaveChanges() > 0;
+                paso = (contexto.SaveChanges() > 0);
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
+
             return paso;
-        }
-
-        public static bool Existe(int id)
-        {
-            Contexto contexto = new Contexto();
-            bool encontrado = false;
-
-            try
-            {
-                encontrado = contexto.Roles.Any(e => e.RolId == id);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return encontrado;
         }
 
         public static bool Eliminar(int id)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+
             try
             {
-                var roles = contexto.Roles.Find(id);
-                if (roles != null)
-                {
-                    contexto.Roles.Remove(roles);
-                    paso = contexto.SaveChanges() > 0;
-                }
+                var eliminar = contexto.Roles.Find(id);
+                contexto.Entry(eliminar).State = EntityState.Deleted;
+
+                paso = (contexto.SaveChanges() > 0);
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
 
         public static Roles Buscar(int id)
         {
-            Contexto contexto = new Contexto();
-            Roles roles;
+            var contexto = new Contexto();
+            var roles = new Roles();
 
             try
             {
-                roles = contexto.Roles.Find(id);
+                roles = contexto.Roles.Include(x => x.RolesDetalle).Where(p => p.RolId == id).SingleOrDefault();
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
+
             return roles;
         }
-        
+
         public static List<Roles> GetList(Expression<Func<Roles, bool>> criterio)
         {
             List<Roles> lista = new List<Roles>();

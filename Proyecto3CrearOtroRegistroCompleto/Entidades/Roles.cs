@@ -13,8 +13,16 @@ namespace Proyecto3CrearOtroRegistroCompleto.Entidades
         public DateTime FechaCreacion { get; set; }
         public string Descripcion { get; set; }
 
+        public Roles()
+        {
+            RolId = 0;
+            FechaCreacion = DateTime.Now;
+
+            RolesDetalle = new List<RolesDetalle>();
+        }
+
         [ForeignKey("RolId")]
-        public virtual Roles Rol { get; set; }
+        public virtual List<RolesDetalle> RolesDetalle { get; set; }
 
     }
 }

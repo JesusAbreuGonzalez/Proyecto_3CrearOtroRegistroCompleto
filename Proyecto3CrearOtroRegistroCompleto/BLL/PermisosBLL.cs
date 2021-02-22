@@ -12,12 +12,26 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 {
     public class PermisosBLL
     {
-        public static bool Guardar(Permisos permisos)
+        public static bool ExistePermiso(string descripcion)
         {
-            if (!Existe(permisos.PermisoId))
-                return Insertar(permisos);
-            else
-                return Modificar(permisos);
+            bool encontrado = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                encontrado = contexto.Permisos.Any(e => e.Descripcion.ToLower() == descripcion.ToLower());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
         }
 
         private static bool Insertar(Permisos permisos)
@@ -61,28 +75,32 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             {
                 contexto.Dispose();
             }
+
             return paso;
         }
 
-        public static bool Existe(int id)
+        public static bool Guardar(Permisos permisos, string descripcion)
         {
+            bool paso = false;
             Contexto contexto = new Contexto();
-            bool encontrado = false;
 
             try
             {
-                encontrado = contexto.Permisos.Any(e => e.PermisoId == id);
+                if (ExistePermiso(descripcion))
+                    return paso;
+                if (contexto.Permisos.Add(permisos) != null)
+                    paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-            return encontrado;
+
+            return paso;
         }
 
         public static bool Eliminar(int id)

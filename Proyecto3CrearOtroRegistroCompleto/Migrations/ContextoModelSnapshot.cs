@@ -70,6 +70,30 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.RolesDetalle", b =>
+                {
+                    b.Property<int>("RolDetalleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("EsAsignado")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PermisoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("RolDetalleId");
+
+                    b.HasIndex("PermisoId");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("RolesDetalle");
+                });
+
             modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Usuarios", b =>
                 {
                     b.Property<int>("UsuarioId")
@@ -102,26 +126,29 @@ namespace Proyecto3CrearOtroRegistroCompleto.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Permisos", b =>
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.RolesDetalle", b =>
                 {
-                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Permisos", "Permiso")
-                        .WithMany()
+                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Permisos", null)
+                        .WithMany("RolesDetalle")
                         .HasForeignKey("PermisoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Permiso");
+                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", null)
+                        .WithMany("RolesDetalle")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Permisos", b =>
+                {
+                    b.Navigation("RolesDetalle");
                 });
 
             modelBuilder.Entity("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", b =>
                 {
-                    b.HasOne("Proyecto3CrearOtroRegistroCompleto.Entidades.Roles", "Rol")
-                        .WithMany()
-                        .HasForeignKey("RolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rol");
+                    b.Navigation("RolesDetalle");
                 });
 #pragma warning restore 612, 618
         }

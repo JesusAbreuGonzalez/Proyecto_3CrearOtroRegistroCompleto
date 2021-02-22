@@ -16,7 +16,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.Entidades
         public string Descripcion { get; set; }
 
         [ForeignKey("PermisoId")]
-        public virtual Permisos Permiso { get; set; }
+        public virtual List<RolesDetalle> RolesDetalle { get; set; }
 
     }
 }
