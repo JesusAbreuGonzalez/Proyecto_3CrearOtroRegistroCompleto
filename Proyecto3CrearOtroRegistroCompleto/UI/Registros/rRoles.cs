@@ -1,4 +1,5 @@
 ﻿using Proyecto3CrearOtroRegistroCompleto.BLL;
+using Proyecto3CrearOtroRegistroCompleto.DAL;
 using Proyecto3CrearOtroRegistroCompleto.Entidades;
 using System;
 using System.Collections.Generic;
@@ -139,6 +140,13 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             }
             else
                 RolErrorProvider.SetError(RolIdNumericUpDown, "Este Id no existe en la base de datos");
+        }
+
+        private void Agregarbutton_Click(object sender, EventArgs e)
+        {
+            var contexto = new Contexto();
+            RolesDataGridView.DataSource = contexto.Roles.ToList();
+            contexto.Dispose();
         }
     }
 }

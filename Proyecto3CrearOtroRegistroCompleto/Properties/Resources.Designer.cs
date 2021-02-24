@@ -63,6 +63,16 @@ namespace Proyecto3CrearOtroRegistroCompleto.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar {
+            get {
+                object obj = ResourceManager.GetObject("agregar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buscar {
             get {
                 object obj = ResourceManager.GetObject("buscar", resourceCulture);
@@ -166,6 +176,16 @@ namespace Proyecto3CrearOtroRegistroCompleto.Properties {
         internal static System.Drawing.Bitmap nuevoBoton {
             get {
                 object obj = ResourceManager.GetObject("nuevoBoton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Remover {
+            get {
+                object obj = ResourceManager.GetObject("Remover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
