@@ -54,7 +54,6 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.RegistrostoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariostoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RolestoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PermisostoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConsultastoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +78,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(466, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(928, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -248,8 +247,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             // 
             this.RegistrostoolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UsuariostoolStripMenuItem,
-            this.RolestoolStripMenuItem,
-            this.PermisostoolStripMenuItem});
+            this.RolestoolStripMenuItem});
             this.RegistrostoolStripMenuItem.Name = "RegistrostoolStripMenuItem";
             this.RegistrostoolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.RegistrostoolStripMenuItem.Text = "&Registros";
@@ -265,12 +263,6 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.RolestoolStripMenuItem.Name = "RolestoolStripMenuItem";
             this.RolestoolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.RolestoolStripMenuItem.Text = "Roles";
-            // 
-            // PermisostoolStripMenuItem
-            // 
-            this.PermisostoolStripMenuItem.Name = "PermisostoolStripMenuItem";
-            this.PermisostoolStripMenuItem.Size = new System.Drawing.Size(150, 26);
-            this.PermisostoolStripMenuItem.Text = "Permisos";
             // 
             // ConsultastoolStripMenuItem
             // 
@@ -364,7 +356,6 @@ namespace Proyecto3CrearOtroRegistroCompleto
         private System.Windows.Forms.ToolStripMenuItem RegistrostoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsuariostoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RolestoolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem PermisostoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ConsultastoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;

@@ -15,9 +15,18 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 {
     public partial class rRoles : Form
     {
+        public List<RolesDetalle> rolDetalle { get; set; }
         public rRoles()
         {
             InitializeComponent();
+            this.rolDetalle = new List<RolesDetalle>();
+
+        }
+
+        private void LlenarGrid()
+        {
+            RolesDataGridView.DataSource = null;
+            RolesDataGridView.DataSource = rolDetalle;
         }
 
         private void Limpiar()
@@ -49,6 +58,8 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             roles.RolId = (int)RolIdNumericUpDown.Value;
             roles.Descripcion = DescripcionTextBox.Text;
             roles.FechaCreacion = CreacionDateTimePicker.Value;
+            roles.RolesDetalle = this.rolDetalle;
+            LlenarGrid();
 
             return roles;
         }
@@ -57,6 +68,8 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         {
             RolIdNumericUpDown.Value = roles.RolId;
             DescripcionTextBox.Text = roles.Descripcion;
+            this.rolDetalle = roles.RolesDetalle;
+            LlenarGrid();
         }
 
 
@@ -144,9 +157,35 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
-            var contexto = new Contexto();
-            RolesDataGridView.DataSource = contexto.Roles.ToList();
-            contexto.Dispose();
+            if (RolesDataGridView.DataSource != null)
+                this.rolDetalle = (List<RolesDetalle>)RolesDataGridView.DataSource;
+
+            this.rolDetalle.Add(
+                new RolesDetalle(
+                    rolId: (int)RolIdNumericUpDown.Value,
+                    permisoId: Convert.ToInt32(PermisoIdComboBox.Text),
+                    esAsignado: EsAsignadoCheckBox.Checked)
+                );
+            LlenarGrid();
+            EsAsignadoCheckBox.Checked = false;
+        }
+
+        //Llenamos el ComboBox de permio ID, usando el metodo GetPermisos
+        private void rRoles_Load(object sender, EventArgs e)
+        {
+
+            PermisoIdComboBox.DataSource = PermisosBLL.GetPermisos();
+            PermisoIdComboBox.DisplayMember = "PermisoId";
+            PermisoIdComboBox.ValueMember = "PermisoId";
+        }
+
+        private void RemoverButton_Click(object sender, EventArgs e)
+        {
+            if(RolesDataGridView.Rows.Count > 0 && RolesDataGridView.CurrentRow != null)
+            {
+                rolDetalle.RemoveAt(RolesDataGridView.CurrentRow.Index);
+                LlenarGrid();
+            }
         }
     }
 }

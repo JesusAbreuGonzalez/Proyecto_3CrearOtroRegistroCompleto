@@ -9,8 +9,8 @@ using Proyecto3CrearOtroRegistroCompleto.DAL;
 namespace Proyecto3CrearOtroRegistroCompleto.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210224030950_Incial")]
-    partial class Incial
+    [Migration("20210226183832_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

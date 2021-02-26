@@ -169,7 +169,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return lista;
         }
 
-        public static List<Permisos> GetRoles()
+        public static List<Permisos> GetPermisos()
         {
             List<Permisos> lista = new List<Permisos>();
             Contexto contexto = new Contexto();

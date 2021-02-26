@@ -43,8 +43,11 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.FechaCreacionLabel = new System.Windows.Forms.Label();
             this.CreacionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DetallegroupBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.PermisoIdComboBox = new System.Windows.Forms.ComboBox();
+            this.EsAsignadoCheckBox = new System.Windows.Forms.CheckBox();
+            this.RemoverButton = new System.Windows.Forms.Button();
             this.Agregarbutton = new System.Windows.Forms.Button();
+            this.PermisoIdLabel = new System.Windows.Forms.Label();
             this.RolesDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.RolIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RolErrorProvider)).BeginInit();
@@ -160,33 +163,57 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             // 
             // DetallegroupBox
             // 
-            this.DetallegroupBox.Controls.Add(this.button1);
+            this.DetallegroupBox.Controls.Add(this.PermisoIdComboBox);
+            this.DetallegroupBox.Controls.Add(this.EsAsignadoCheckBox);
+            this.DetallegroupBox.Controls.Add(this.RemoverButton);
             this.DetallegroupBox.Controls.Add(this.Agregarbutton);
+            this.DetallegroupBox.Controls.Add(this.PermisoIdLabel);
             this.DetallegroupBox.Controls.Add(this.RolesDataGridView);
-            this.DetallegroupBox.Location = new System.Drawing.Point(17, 190);
+            this.DetallegroupBox.Location = new System.Drawing.Point(17, 163);
             this.DetallegroupBox.Name = "DetallegroupBox";
-            this.DetallegroupBox.Size = new System.Drawing.Size(382, 301);
+            this.DetallegroupBox.Size = new System.Drawing.Size(611, 328);
             this.DetallegroupBox.TabIndex = 23;
             this.DetallegroupBox.TabStop = false;
             this.DetallegroupBox.Text = "Detalle de rol";
             // 
-            // button1
+            // PermisoIdComboBox
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 28);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Remover";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.PermisoIdComboBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.PermisoIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PermisoIdComboBox.FormattingEnabled = true;
+            this.PermisoIdComboBox.Location = new System.Drawing.Point(92, 34);
+            this.PermisoIdComboBox.Name = "PermisoIdComboBox";
+            this.PermisoIdComboBox.Size = new System.Drawing.Size(116, 28);
+            this.PermisoIdComboBox.TabIndex = 27;
+            // 
+            // EsAsignadoCheckBox
+            // 
+            this.EsAsignadoCheckBox.AutoSize = true;
+            this.EsAsignadoCheckBox.Location = new System.Drawing.Point(214, 38);
+            this.EsAsignadoCheckBox.Name = "EsAsignadoCheckBox";
+            this.EsAsignadoCheckBox.Size = new System.Drawing.Size(112, 24);
+            this.EsAsignadoCheckBox.TabIndex = 26;
+            this.EsAsignadoCheckBox.Text = "Es Asignado";
+            this.EsAsignadoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // RemoverButton
+            // 
+            this.RemoverButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoverButton.Image")));
+            this.RemoverButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RemoverButton.Location = new System.Drawing.Point(4, 295);
+            this.RemoverButton.Name = "RemoverButton";
+            this.RemoverButton.Size = new System.Drawing.Size(92, 28);
+            this.RemoverButton.TabIndex = 25;
+            this.RemoverButton.Text = "Remover";
+            this.RemoverButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RemoverButton.UseVisualStyleBackColor = true;
+            this.RemoverButton.Click += new System.EventHandler(this.RemoverButton_Click);
             // 
             // Agregarbutton
             // 
             this.Agregarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Agregarbutton.Image")));
             this.Agregarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Agregarbutton.Location = new System.Drawing.Point(284, 13);
+            this.Agregarbutton.Location = new System.Drawing.Point(511, 34);
             this.Agregarbutton.Name = "Agregarbutton";
             this.Agregarbutton.Size = new System.Drawing.Size(92, 28);
             this.Agregarbutton.TabIndex = 24;
@@ -195,21 +222,30 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.Agregarbutton.UseVisualStyleBackColor = true;
             this.Agregarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
             // 
+            // PermisoIdLabel
+            // 
+            this.PermisoIdLabel.AutoSize = true;
+            this.PermisoIdLabel.Location = new System.Drawing.Point(6, 38);
+            this.PermisoIdLabel.Name = "PermisoIdLabel";
+            this.PermisoIdLabel.Size = new System.Drawing.Size(80, 20);
+            this.PermisoIdLabel.TabIndex = 24;
+            this.PermisoIdLabel.Text = "Permiso ID";
+            // 
             // RolesDataGridView
             // 
             this.RolesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RolesDataGridView.Location = new System.Drawing.Point(8, 46);
+            this.RolesDataGridView.Location = new System.Drawing.Point(6, 74);
             this.RolesDataGridView.Name = "RolesDataGridView";
             this.RolesDataGridView.RowHeadersWidth = 51;
             this.RolesDataGridView.RowTemplate.Height = 29;
-            this.RolesDataGridView.Size = new System.Drawing.Size(368, 219);
+            this.RolesDataGridView.Size = new System.Drawing.Size(597, 219);
             this.RolesDataGridView.TabIndex = 0;
             // 
             // rRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 578);
+            this.ClientSize = new System.Drawing.Size(646, 578);
             this.Controls.Add(this.DetallegroupBox);
             this.Controls.Add(this.BuscarRolButton);
             this.Controls.Add(this.EliminarRolButton);
@@ -224,9 +260,11 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "rRoles";
             this.Text = "RegistroRoles";
+            this.Load += new System.EventHandler(this.rRoles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RolIdNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RolErrorProvider)).EndInit();
             this.DetallegroupBox.ResumeLayout(false);
+            this.DetallegroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RolesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -248,7 +286,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private System.Windows.Forms.Label FechaCreacionLabel;
         private System.Windows.Forms.GroupBox DetallegroupBox;
         private System.Windows.Forms.DataGridView RolesDataGridView;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button RemoverButton;
         private System.Windows.Forms.Button Agregarbutton;
+        private System.Windows.Forms.CheckBox EsAsignadoCheckBox;
+        private System.Windows.Forms.Label PermisoIdLabel;
+        private System.Windows.Forms.ComboBox PermisoIdComboBox;
     }
 }
