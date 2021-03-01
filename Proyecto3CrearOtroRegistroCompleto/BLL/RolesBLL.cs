@@ -72,7 +72,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM OrdenesDetalle Where RolId = {roles.RolId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM RolesDetalle Where RolId = {roles.RolId}");
                 foreach (var anterior in roles.RolesDetalle)
                 {
                     contexto.Entry(anterior).State = EntityState.Added;
