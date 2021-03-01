@@ -111,13 +111,22 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
         private void GuardarRolButton_Click(object sender, EventArgs e)
         {
             Roles roles;
-            bool paso = false;
+           // bool paso = false;
 
             if (!Validar())
                 return;
             roles = LlenaClase();
+            var paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
 
-            //Determinar si es guardar o modificar
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("El usuario ha sido guardado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("El usuario no ha sido guardado con exito", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+          /*  //Determinar si es guardar o modificar
             if (RolIdNumericUpDown.Value == 0)
             {
                 paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
@@ -137,7 +146,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
                 MessageBox.Show("El rol ha sido guardada!", "Logrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
@@ -162,6 +171,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
 
             this.rolDetalle.Add(
                 new RolesDetalle(
+                    id: 0,
                     rolId: (int)RolIdNumericUpDown.Value,
                     permisoId: Convert.ToInt32(PermisoIdComboBox.Text),
                     esAsignado: EsAsignadoCheckBox.Checked)

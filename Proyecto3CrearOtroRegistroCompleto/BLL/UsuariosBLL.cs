@@ -56,7 +56,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
-        public static bool Modificar(Usuarios usuarios)
+        private static bool Modificar(Usuarios usuarios)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -81,26 +81,10 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
 
         public static bool Guardar(Usuarios usuarios, string nombre)
         {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-                if (ExisteAlias(nombre))
-                    return paso;
-                if (contexto.Usuarios.Add(usuarios) != null)
-                    paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
+            if (!ExisteAlias(usuarios.Alias))
+                return Insertar(usuarios);
+            else
+                return Modificar(usuarios);
         }
 
         public static bool Eliminar(int id)

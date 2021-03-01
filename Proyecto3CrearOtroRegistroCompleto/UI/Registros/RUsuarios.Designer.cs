@@ -176,6 +176,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.IngresoDateTimePicker.Name = "IngresoDateTimePicker";
             this.IngresoDateTimePicker.Size = new System.Drawing.Size(225, 27);
             this.IngresoDateTimePicker.TabIndex = 14;
+            this.IngresoDateTimePicker.ValueChanged += new System.EventHandler(this.IngresoDateTimePicker_ValueChanged);
             // 
             // RolComboBox
             // 
@@ -259,7 +260,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.UsuarioIdNumericUpDown.Size = new System.Drawing.Size(150, 27);
             this.UsuarioIdNumericUpDown.TabIndex = 21;
             // 
-            // RegistroUsuarios
+            // rUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -286,7 +287,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
             this.Controls.Add(this.Aliaslabel);
             this.Controls.Add(this.usuariosIdLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RegistroUsuarios";
+            this.Name = "rUsuarios";
             this.Text = "Registro de usuarios";
             this.Load += new System.EventHandler(this.RegistroUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioErrorProvider)).EndInit();

@@ -17,15 +17,15 @@ namespace Proyecto3CrearOtroRegistroCompleto.Entidades
 
         public RolesDetalle()
         {
-            RolDetalleId = 0;
+           RolDetalleId = 0;
             RolId = 0;
             PermisoId = 0;
             EsAsignado = true;
         }
 
-        public RolesDetalle(int rolId, int permisoId, bool esAsignado)
+        public RolesDetalle(int id, int rolId, int permisoId, bool esAsignado)
         {
-            RolDetalleId = 0;
+            RolDetalleId = id;
             RolId = rolId;
             PermisoId = permisoId;
             EsAsignado = esAsignado;

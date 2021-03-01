@@ -128,11 +128,10 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento del boton Buscar, sirve para buscar los datos correspondientes al id ingresado
         private void BuscarButton_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios();
             int id = (int)UsuarioIdNumericUpDown.Value;
 
             Limpiar();
-            usuarios = UsuariosBLL.Buscar(id);
+            var usuarios = UsuariosBLL.Buscar(id);
             if(usuarios != null)
             {
                 LlenaCampos(usuarios);
@@ -148,35 +147,21 @@ namespace Proyecto3CrearOtroRegistroCompleto
         //Este es el evento de boton guardar y sirve para almacenar o modificar los datos de los usuarios que se registren
         private void GuardarButton_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios;
-            bool paso = false;
+            Usuarios usuarios;         
 
             if (!Validar())
                 return;
 
             usuarios = LlenaClase();
+            var paso = UsuariosBLL.Guardar(usuarios, aliasTextBox.Text);
 
-            //Determinar si es guardar o modificar
-            if (UsuarioIdNumericUpDown.Value == 0)
-            {
-                paso = UsuariosBLL.Guardar(usuarios, aliasTextBox.Text);
-            }
-            else
-            {
-                if (!ExisteEnBaseDeDatos())
-                {
-                    MessageBox.Show("No se puede modificar un usuario que no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                paso = UsuariosBLL.Modificar(usuarios);
-            }
-            if (paso)
+            if(paso)
             {
                 Limpiar();
-                MessageBox.Show("El usuario ha sido guardada!", "Logrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El usuario ha sido guardado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El usuario no ha sido guardado con exito", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado
@@ -196,6 +181,11 @@ namespace Proyecto3CrearOtroRegistroCompleto
             RolComboBox.DataSource = RolesBLL.GetRoles();
             RolComboBox.DisplayMember = "Descripcion";
             RolComboBox.ValueMember = "RolId";
+        }
+
+        private void IngresoDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
