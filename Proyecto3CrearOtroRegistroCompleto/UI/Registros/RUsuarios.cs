@@ -153,7 +153,7 @@ namespace Proyecto3CrearOtroRegistroCompleto
                 return;
 
             usuarios = LlenaClase();
-            var paso = UsuariosBLL.Guardar(usuarios, aliasTextBox.Text);
+            var paso = UsuariosBLL.Guardar(usuarios);
 
             if(paso)
             {

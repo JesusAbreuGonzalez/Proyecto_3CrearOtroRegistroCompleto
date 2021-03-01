@@ -79,7 +79,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
-        public static bool Guardar(Usuarios usuarios, string nombre)
+        public static bool Guardar(Usuarios usuarios)
         {
             if (!ExisteAlias(usuarios.Alias))
                 return Insertar(usuarios);
