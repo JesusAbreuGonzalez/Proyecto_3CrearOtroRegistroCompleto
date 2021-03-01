@@ -34,6 +34,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             RolIdNumericUpDown.Value = 0;
             CreacionDateTimePicker.Value = DateTime.Now;
             DescripcionTextBox.Clear();
+            RolesDataGridView.DataSource = null;
         }
 
 
@@ -116,7 +117,7 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             if (!Validar())
                 return;
             roles = LlenaClase();
-            var paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
+            var paso = RolesBLL.Guardar(roles);
 
             if (paso)
             {
@@ -125,28 +126,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.UI.Registros
             }
             else
                 MessageBox.Show("El usuario no ha sido guardado con exito", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-          /*  //Determinar si es guardar o modificar
-            if (RolIdNumericUpDown.Value == 0)
-            {
-                paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
-            }
-            else
-            {
-                if (!ExisteEnBaseDeDatos())
-                {
-                    MessageBox.Show("No se puede modificar un usuario que no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                paso = RolesBLL.Modificar(roles);
-            }
-            if (paso)
-            {
-                Limpiar();
-                MessageBox.Show("El rol ha sido guardada!", "Logrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
         }
 
         //Este es el evento del boton eliminar y sirve para eliminar los datos correspondiente al id ingresado

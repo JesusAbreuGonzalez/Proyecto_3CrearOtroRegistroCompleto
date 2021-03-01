@@ -34,28 +34,6 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return encontrado;
         }
 
-        private static bool Insertar(Permisos permisos)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-                contexto.Permisos.Add(permisos);
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
         public static bool Modificar(Permisos permisos)
         {
             bool paso = false;
@@ -79,28 +57,35 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
-        public static bool Guardar(Permisos permisos, string descripcion)
+        private static bool Insertar(Permisos permisos)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                if (ExistePermiso(descripcion))
-                    return paso;
-                if (contexto.Permisos.Add(permisos) != null)
-                    paso = contexto.SaveChanges() > 0;
+                contexto.Permisos.Add(permisos);
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
+        }
+
+        //Metodo para guardar los permisos
+        public static bool Guardar(Permisos permisos)
+        {
+            if (!ExistePermiso(permisos.Descripcion))
+                return Insertar(permisos);
+            else
+                return Modificar(permisos);
         }
 
         public static bool Eliminar(int id)

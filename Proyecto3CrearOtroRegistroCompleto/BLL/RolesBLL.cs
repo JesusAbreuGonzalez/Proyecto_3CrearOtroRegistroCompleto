@@ -56,13 +56,14 @@ namespace Proyecto3CrearOtroRegistroCompleto.BLL
             return paso;
         }
 
-        public static bool Guardar(Roles roles, string descipcion)
+        public static bool Guardar(Roles roles)
         {
             if (!ExisteRol(roles.Descripcion))
                 return Insertar(roles);
             else
                 return Modificar(roles);
         }
+
 
         private static bool Modificar(Roles roles)
         {
